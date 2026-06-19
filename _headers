@@ -1,0 +1,16 @@
+# Cloudflare Pages headers.
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+
+# The picker is a no-build app with un-hashed module filenames. Revalidate so a
+# new deploy never serves stale JavaScript from the browser cache.
+/picker/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/picker/src/*
+  Cache-Control: public, max-age=0, must-revalidate

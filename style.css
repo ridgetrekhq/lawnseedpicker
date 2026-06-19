@@ -1,0 +1,93 @@
+/* LawnSeedPicker — shared styles
+   Warm, lawn-themed. Palette named below; spend boldness on the seed-row divider + the hand-drawn hero seed-scatter feel via type.
+   --- tokens ---
+   ink        #233028  deep blade-green (text)
+   moss       #3d5a40  mid green (headings, links)
+   sprout     #6f9c5a  fresh green (accents, buttons)
+   sun        #e7b85c  warm seed-gold (highlights)
+   cream      #f7f4ec  paper/soil-light (bg)
+   sand       #efe7d6  warm panel
+*/
+
+:root{
+  --ink:#233028; --moss:#3d5a40; --sprout:#6f9c5a; --sun:#e7b85c;
+  --cream:#f7f4ec; --sand:#efe7d6; --line:#d9cfba;
+  --maxw:760px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:18px; line-height:1.65;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+
+/* header / nav */
+.site-head{border-bottom:2px solid var(--line); background:var(--cream)}
+.site-head .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px; gap:10px}
+.brand{font-weight:700; font-size:1.35rem; color:var(--moss); text-decoration:none; letter-spacing:-.01em}
+.brand span{color:var(--sprout)}
+nav a{color:var(--ink); text-decoration:none; margin-left:18px; font-size:.95rem; font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+nav a:hover{color:var(--sprout)}
+@media(max-width:560px){nav{width:100%}nav a{margin:0 16px 0 0}}
+
+/* hero */
+.hero{padding:64px 0 40px; text-align:left}
+.eyebrow{font-family:system-ui,sans-serif; text-transform:uppercase; letter-spacing:.14em; font-size:.74rem; color:var(--sprout); font-weight:700; margin:0 0 14px}
+.hero h1{font-size:2.7rem; line-height:1.08; margin:.1em 0 .35em; color:var(--moss); letter-spacing:-.02em}
+.hero p.lede{font-size:1.2rem; margin:0 0 26px; max-width:60ch}
+@media(max-width:560px){.hero h1{font-size:2.05rem}}
+
+/* the signature: a sown seed-row divider */
+.seedrow{border:0; height:auto; margin:40px 0; text-align:center; color:var(--sun); font-size:1rem; letter-spacing:.5em; line-height:1}
+.seedrow::before{content:"· · ✦ · · · ✦ · · · ✦ · ·"; opacity:.85}
+
+/* status pill */
+.pill{display:inline-block; background:var(--sand); border:1px solid var(--line); color:var(--moss);
+  font-family:system-ui,sans-serif; font-size:.8rem; font-weight:600; padding:6px 13px; border-radius:999px; margin-bottom:22px}
+.pill .dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--sprout); margin-right:7px; vertical-align:middle}
+
+/* buttons */
+.btn{display:inline-block; background:var(--sprout); color:#fff; text-decoration:none;
+  font-family:system-ui,sans-serif; font-weight:600; font-size:1rem; padding:13px 24px; border-radius:8px; border:0; cursor:pointer}
+.btn:hover{background:var(--moss)}
+.btn.ghost{background:transparent; color:var(--moss); border:1.5px solid var(--sprout)}
+.btn.ghost:hover{background:var(--sand)}
+
+/* content */
+main{padding:8px 0 56px}
+h2{font-size:1.6rem; color:var(--moss); margin:1.8em 0 .5em; letter-spacing:-.01em}
+h3{font-size:1.18rem; color:var(--ink); margin:1.5em 0 .3em}
+article p, main > .wrap > p{max-width:68ch}
+a{color:var(--sprout)}
+a:hover{color:var(--moss)}
+.muted{color:#5e6b60; font-size:.95rem}
+.article-meta{font-family:system-ui,sans-serif; font-size:.85rem; color:#6b7a6e; margin:0 0 8px; text-transform:uppercase; letter-spacing:.08em}
+
+/* feature cards on landing */
+.cards{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin:30px 0}
+.card{background:var(--sand); border:1px solid var(--line); border-radius:10px; padding:20px}
+.card h3{margin:.2em 0 .3em; color:var(--moss)}
+.card p{margin:0; font-size:.95rem; color:#4a574c}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+
+/* disclosure callout */
+.disclosure{background:var(--sand); border-left:4px solid var(--sun); padding:14px 18px; border-radius:0 8px 8px 0;
+  font-size:.92rem; color:#4a574c; margin:24px 0}
+.disclosure strong{color:var(--moss)}
+
+/* footer */
+.site-foot{border-top:2px solid var(--line); padding:30px 0 50px; font-family:system-ui,sans-serif; font-size:.88rem; color:#6b7a6e}
+.site-foot a{color:#6b7a6e; text-decoration:none; margin-right:16px}
+.site-foot a:hover{color:var(--sprout)}
+.site-foot .legal{margin-top:14px; max-width:70ch; line-height:1.5}
+
+/* lists in articles */
+article ul{padding-left:1.1em}
+article li{margin:.4em 0; max-width:64ch}
+
+/* focus visibility (quality floor) */
+a:focus-visible, .btn:focus-visible{outline:3px solid var(--sun); outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
