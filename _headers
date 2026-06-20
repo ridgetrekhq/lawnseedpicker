@@ -14,3 +14,7 @@
 
 /picker/src/*
   Cache-Control: public, max-age=0, must-revalidate
+
+# Vendored libraries (pinned versions). Cache a day; refresh on version bumps.
+/picker/vendor/*
+  Cache-Control: public, max-age=86400

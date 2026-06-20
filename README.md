@@ -20,7 +20,7 @@ The full lawnseedpicker.com site in one repo. Static, no build step.
 
 ## How it works (no build, no server backend)
 
-- React + htm load from the esm.sh CDN via an import map in `picker/index.html`. There is **no bundler and no build command** — Cloudflare just serves these files.
+- React + htm are **vendored locally** in `picker/vendor/` and resolved via an import map in `picker/index.html`. There is **no bundler, no build command, and no third-party request at runtime** — Cloudflare just serves these files. (See `picker/vendor/README.md` for versions / how to refresh.)
 - All recommendation logic runs **in the browser**. The species database ships as `picker/src/data/database.js`. The zip is resolved against the baked-in prefix table and **never leaves the browser** — no API, no geolocation.
 - Affiliate links are **labeled placeholders** (`picker/src/data/retailers.js`, all `retailer: 'placeholder'`, `url: '#'`). Swap real tracked URLs in that one file when DoMyOwn / Andersons approve.
 
@@ -87,7 +87,6 @@ Once `lawnseedpicker.com` serves from the new Git project and is verified, delet
 
 ## Notes / future hardening
 
-- **Third-party CDN:** the tool fetches React/htm from `esm.sh` at runtime. The zip and all data stay in the browser, but the visitor's browser does make a request to esm.sh for the library code. For the strongest privacy posture and offline reliability, consider **vendoring** React/htm into `/picker/vendor/` and pointing the import map at local files (removes the only third-party request). Flagged as an optional pre-launch step.
-- **Launch copy:** the homepage still carries "launching August 2026 / not open yet" messaging. Update that when you decide to publicly launch the tool.
+- **Privacy / no third-party requests:** React + htm are vendored locally (`picker/vendor/`), so the site makes **no runtime calls to any third party**. The zip and all data stay in the browser; nothing is fetched from a CDN. This is deliberate — it's the privacy posture the whole tool is built around.
 - **Sitemap:** `/picker/` is included. Resubmit `sitemap.xml` to Google Search Console + Bing after the SEO pages land (Week 5).
 - **Analytics:** none yet (deliberate). Adding any is a privacy-policy regeneration trigger.

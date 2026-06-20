@@ -6,13 +6,15 @@
 <title>LawnSeedPicker — What should I plant?</title>
 <meta name="description" content="Free tool: tell us your zip and your yard, get the grass seed that actually fits — how much to throw down, and when. Grounded in university extension data.">
 
-<!-- No-build React: react, react-dom, htm pinned via esm.sh. No bundler, no server. -->
+<!-- No-build React: react, react-dom, htm vendored locally in ./vendor/ (pinned
+     18.3.1 / htm 3.1.1). No bundler, no server, and NO third-party requests at
+     runtime — nothing leaves the visitor's browser. -->
 <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-    "htm": "https://esm.sh/htm@3.1.1"
+    "react": "./vendor/react.js",
+    "react-dom/client": "./vendor/react-dom-client.js",
+    "htm": "./vendor/htm.js"
   }
 }
 </script>
@@ -213,8 +215,8 @@
     <div id="app"></div>
     <div id="boot-error">
       <strong>The calculator didn't load.</strong>
-      <div>If you opened this file directly, the React modules are fetched from a CDN (esm.sh) and need an internet
-      connection on first load. Check your connection and refresh.</div>
+      <div>Something went wrong loading the tool. Please refresh — if it keeps happening,
+      let us know at <a href="mailto:hello@lawnseedpicker.com">hello@lawnseedpicker.com</a>.</div>
     </div>
   </div>
 </main>
