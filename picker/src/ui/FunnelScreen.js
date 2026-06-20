@@ -100,7 +100,7 @@ export function FunnelScreen() {
             inputmode="numeric"
             maxlength="5"
             value=${a.zip}
-            placeholder="e.g. 02052"
+            placeholder="e.g. 10001"
             onInput=${(e) => set('zip')(e.target.value)} />
           ${a.zip.length >= 3 &&
           (zipOk
