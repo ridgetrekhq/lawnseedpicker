@@ -71,23 +71,34 @@ function DiyRecipe({ blend }) {
 }
 
 function RetailBlends({ retail }) {
+  // Until affiliate programs approve, retailer links are placeholders ('#').
+  // Route those to our own buying guide — functional and honest. As real tracked
+  // URLs get filled into RETAILERS (data/retailers.js), they take over here
+  // automatically and open externally with rel="sponsored".
+  const GUIDE_URL = '/where-to-buy-grass-seed.html';
   return html`
     <section class="output">
       <h2>Buy it ready-made</h2>
       <p class="disclosure-inline">${FTC_DISCLOSURE}</p>
       <div class="retail-grid">
-        ${retail.map(
-          (p) => html`
+        ${retail.map((p) => {
+          const hasLink = p.retailerInfo.url && p.retailerInfo.url !== '#';
+          const href = hasLink ? p.retailerInfo.url : GUIDE_URL;
+          return html`
             <div class="retail-card" key=${p.id}>
               <div class="retail-name">${p.name}</div>
               <div class="retail-brand muted">${p.brand !== 'generic' ? p.brand : ''}</div>
               <p class="retail-why">${p.why}</p>
-              <a class="btn ghost" href=${p.retailerInfo.url} onClick=${(e) => e.preventDefault()}>
-                Where to buy ${'›'}
+              <a
+                class="btn ghost"
+                href=${href}
+                target=${hasLink ? '_blank' : undefined}
+                rel=${hasLink ? 'sponsored noopener' : undefined}>
+                ${hasLink ? 'Where to buy ›' : 'How to find it ›'}
               </a>
-              <div class="retail-status muted">${p.retailerInfo.name}${p.vendorClaim ? ' · vendor claims' : ''}</div>
-            </div>`
-        )}
+              <div class="retail-status muted">${hasLink ? p.retailerInfo.name : 'see our buying guide'}${p.vendorClaim ? ' · vendor claims' : ''}</div>
+            </div>`;
+        })}
       </div>
     </section>`;
 }
