@@ -3,232 +3,95 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LawnSeedPicker — What should I plant?</title>
-<meta name="description" content="Free tool: tell us your zip and your yard, get the grass seed that actually fits — how much to throw down, and when. Grounded in university extension data.">
-
-<!-- No-build React: react, react-dom, htm pinned via esm.sh. No bundler, no server. -->
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-    "htm": "https://esm.sh/htm@3.1.1"
-  }
-}
-</script>
-
-<style>
-  /* --- theme tokens (shared with the live site's style.css) --- */
-  :root{
-    --ink:#233028; --moss:#3d5a40; --sprout:#6f9c5a; --sun:#e7b85c;
-    --cream:#f7f4ec; --sand:#efe7d6; --line:#d9cfba; --maxw:820px;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0; background:var(--cream); color:var(--ink);
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    font-size:18px; line-height:1.65;
-  }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
-  .site-head{border-bottom:2px solid var(--line); background:var(--cream)}
-  .site-head .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 22px}
-  .brand{font-weight:700; font-size:1.35rem; color:var(--moss); text-decoration:none; letter-spacing:-.01em}
-  .brand span{color:var(--sprout)}
-
-  h1{font-size:2.3rem; line-height:1.1; margin:.2em 0 .3em; color:var(--moss); letter-spacing:-.02em}
-  h2{font-size:1.5rem; color:var(--moss); margin:1.6em 0 .4em; letter-spacing:-.01em}
-  .lede{font-size:1.12rem; max-width:62ch}
-  code{background:var(--sand); padding:1px 6px; border-radius:5px; font-size:.92em}
-  .muted{color:#5e6b60; font-size:.95rem}
-  .note{font-family:system-ui,sans-serif; font-size:.82rem; color:#8a6d2f; margin-top:4px}
-
-  .pill{display:inline-block; background:var(--sand); border:1px solid var(--line); color:var(--moss);
-    font-family:system-ui,sans-serif; font-size:.8rem; font-weight:600; padding:6px 13px; border-radius:999px; margin:24px 0 8px}
-  .pill .dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--sprout); margin-right:7px; vertical-align:middle}
-
-  /* region selector cards */
-  .region-tabs{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:22px 0}
-  .region-tab{text-align:left; background:var(--sand); border:1.5px solid var(--line); border-radius:10px;
-    padding:14px 16px; cursor:pointer; font-family:inherit; color:var(--ink); transition:border-color .12s, background .12s}
-  .region-tab:hover{border-color:var(--sprout)}
-  .region-tab.is-active{border-color:var(--sprout); background:#fff; box-shadow:0 0 0 2px var(--sprout) inset}
-  .region-name{display:block; font-weight:700; color:var(--moss); font-size:1.05rem}
-  .region-blurb{display:block; font-family:system-ui,sans-serif; font-size:.82rem; color:#5e6b60; margin-top:4px; line-height:1.4}
-  @media(max-width:640px){.region-tabs{grid-template-columns:1fr}}
-
-  /* species table */
-  table.species{width:100%; border-collapse:collapse; margin:14px 0; font-size:.98rem}
-  table.species th{text-align:left; font-family:system-ui,sans-serif; font-size:.78rem; text-transform:uppercase;
-    letter-spacing:.06em; color:#6b7a6e; border-bottom:2px solid var(--line); padding:8px 10px}
-  table.species td{border-bottom:1px solid var(--line); padding:10px; vertical-align:top}
-  .cat{font-family:system-ui,sans-serif; font-size:.8rem; padding:2px 8px; border-radius:999px; white-space:nowrap}
-  .cat-cool_season_grass{background:#e3efe0; color:#34642f}
-  .cat-warm_season_grass{background:#faecd2; color:#8a6d2f}
-  .cat-legume{background:#e8e3f2; color:#5b4a86}
-  .tag{display:inline-block; font-family:system-ui,sans-serif; font-size:.72rem; font-weight:600;
-    padding:1px 7px; border-radius:999px; margin-left:6px; vertical-align:middle}
-  .tag-ok{background:#dcefd6; color:#2f6a2a}
-  .tag-warn{background:#f6dede; color:#9a3b3b}
-  .tag-fescue{background:#eef0e6; color:#5e6b60}
-
-  /* zip demo */
-  .zip-demo{background:#fff; border:1.5px solid var(--line); border-radius:10px; padding:18px 20px; margin:16px 0}
-  .zip-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-  .zip-input{font-family:system-ui,sans-serif; font-size:1.05rem; padding:9px 12px; border:1.5px solid var(--line);
-    border-radius:8px; width:130px; letter-spacing:.06em}
-  .zip-input:focus{outline:none; border-color:var(--sprout); box-shadow:0 0 0 2px var(--sprout) inset}
-  .zip-result{font-family:system-ui,sans-serif; font-size:.95rem}
-  .region-chip{display:inline-block; font-family:system-ui,sans-serif; font-weight:700; font-size:.82rem;
-    padding:3px 10px; border-radius:999px}
-  .region-chip.cool{background:#e3efe0; color:#34642f}
-  .region-chip.transition{background:#e8e3f2; color:#5b4a86}
-  .region-chip.warm{background:#faecd2; color:#8a6d2f}
-  .region-chip.unknown{background:#eee; color:#666}
-  .samples{display:grid; grid-template-columns:repeat(2,1fr); gap:8px 18px; margin-top:14px;
-    font-family:system-ui,sans-serif; font-size:.9rem}
-  .samples .s-zip{font-weight:700; color:var(--moss)}
-  @media(max-width:560px){.samples{grid-template-columns:1fr}}
-
-  .disclosure{background:var(--sand); border-left:4px solid var(--sun); padding:14px 18px; border-radius:0 8px 8px 0;
-    font-size:.92rem; color:#4a574c; margin:24px 0; font-family:system-ui,sans-serif}
-  .disclosure strong{color:var(--moss)}
-
-  /* --- 7-field funnel --- */
-  .field{padding:22px 0; border-top:1px solid var(--line)}
-  .field-head{display:flex; gap:14px; align-items:flex-start; margin-bottom:14px}
-  .field-num{flex:0 0 auto; width:30px; height:30px; border-radius:50%; background:var(--moss); color:#fff;
-    font-family:system-ui,sans-serif; font-weight:700; font-size:.95rem; display:flex; align-items:center; justify-content:center; margin-top:2px}
-  .field-q{margin:0; font-size:1.28rem; color:var(--moss); font-family:inherit}
-  .field-opt{font-family:system-ui,sans-serif; font-size:.8rem; color:#8a8470; font-weight:400}
-  .field-help{margin:4px 0 0; font-family:system-ui,sans-serif; font-size:.9rem; color:#5e6b60; max-width:60ch; line-height:1.45}
-
-  .opt-grid{display:grid; gap:10px}
-  .opt-grid.cols-2{grid-template-columns:1fr 1fr}
-  .opt-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
-  @media(max-width:600px){.opt-grid.cols-2,.opt-grid.cols-3{grid-template-columns:1fr}}
-  .opt-card{display:flex; flex-direction:column; gap:3px; text-align:left; cursor:pointer;
-    background:var(--sand); border:1.5px solid var(--line); border-radius:10px; padding:13px 15px;
-    font-family:inherit; color:var(--ink); transition:border-color .12s, background .12s, box-shadow .12s}
-  .opt-card:hover{border-color:var(--sprout)}
-  .opt-card.is-active{border-color:var(--sprout); background:#fff; box-shadow:0 0 0 2px var(--sprout) inset}
-  .opt-label{font-weight:700; color:var(--moss); font-size:1rem}
-  .opt-hint{font-family:system-ui,sans-serif; font-size:.8rem; color:#5e6b60; line-height:1.35}
-
-  .subfield{margin-top:14px; padding-top:14px; border-top:1px dashed var(--line)}
-  .subfield .field-help{margin-bottom:10px}
-  .link-btn{background:none; border:0; color:var(--sprout); font-family:system-ui,sans-serif; font-size:.95rem;
-    font-weight:600; cursor:pointer; padding:6px 0}
-  .link-btn:hover{color:var(--moss)}
-
-  .zip-row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
-  .zip-input{font-family:system-ui,sans-serif; font-size:1.1rem; padding:10px 13px; border:1.5px solid var(--line);
-    border-radius:8px; width:140px; letter-spacing:.08em}
-  .zip-input:focus{outline:none; border-color:var(--sprout); box-shadow:0 0 0 2px var(--sprout) inset}
-  .zip-result{font-family:system-ui,sans-serif; font-size:.95rem}
-  .region-chip{display:inline-block; font-family:system-ui,sans-serif; font-weight:700; font-size:.82rem; padding:2px 9px; border-radius:999px}
-  .region-chip.cool{background:#e3efe0; color:#34642f}
-  .region-chip.transition{background:#e8e3f2; color:#5b4a86}
-  .region-chip.warm{background:#faecd2; color:#8a6d2f}
-
-  .btn{display:inline-block; background:var(--sprout); color:#fff; border:0; cursor:pointer;
-    font-family:system-ui,sans-serif; font-weight:600; font-size:1.05rem; padding:14px 26px; border-radius:8px}
-  .btn:hover{background:var(--moss)}
-  .btn:disabled{background:#cbd3c4; cursor:not-allowed}
-  .funnel-foot{display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:24px 0 8px; border-top:1px solid var(--line)}
-
-  .captured{background:#fbf9f3; border:1px dashed var(--line); border-radius:10px; padding:14px 18px; margin:22px 0 8px}
-  .captured-title{margin:0 0 10px; font-family:system-ui,sans-serif; font-size:.85rem; font-weight:700; color:var(--moss); text-transform:uppercase; letter-spacing:.05em}
-  .captured-grid{display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; font-family:system-ui,sans-serif; font-size:.9rem}
-  @media(max-width:560px){.captured-grid{grid-template-columns:1fr}}
-  .captured-grid .ck{color:#6b7a6e; margin-right:8px}
-  .captured-grid .cv{color:var(--ink); font-weight:600}
-
-  /* --- result screen --- */
-  .btn.ghost{background:transparent; color:var(--moss); border:1.5px solid var(--sprout); padding:9px 16px; font-size:.92rem}
-  .btn.ghost:hover{background:var(--sand); color:var(--moss)}
-  .output{padding:8px 0 4px; margin:10px 0}
-  .output h2{font-size:1.45rem; color:var(--moss); margin:1.1em 0 .3em}
-
-  .window-banner{display:flex; gap:14px; align-items:flex-start; border-radius:10px; padding:16px 18px; margin:18px 0;
-    font-family:system-ui,sans-serif; font-size:.98rem}
-  .window-banner.win-early{background:#fbf1da; border:1px solid #e7b85c}
-  .window-banner.win-open{background:#e3efe0; border:1px solid var(--sprout)}
-  .win-icon{font-size:1.4rem; line-height:1; color:var(--moss)}
-  .window-banner strong{color:var(--moss); display:block; margin-bottom:2px}
-
-  table.recipe{width:100%; border-collapse:collapse; margin:10px 0; font-size:1rem}
-  table.recipe th{text-align:left; font-family:system-ui,sans-serif; font-size:.76rem; text-transform:uppercase;
-    letter-spacing:.05em; color:#6b7a6e; border-bottom:2px solid var(--line); padding:8px 10px}
-  table.recipe td{border-bottom:1px solid var(--line); padding:11px 10px}
-  table.recipe td:last-child, table.recipe th:last-child{text-align:right; font-variant-numeric:tabular-nums}
-  table.recipe td:nth-child(3), table.recipe th:nth-child(3){text-align:right}
-  .tag{display:inline-block; font-family:system-ui,sans-serif; font-size:.7rem; font-weight:600; padding:1px 7px; border-radius:999px; margin-left:6px; vertical-align:middle}
-  .tag-warn{background:#f6dede; color:#9a3b3b}
-  .tag-fescue{background:#eef0e6; color:#5e6b60}
-
-  .area-row{display:flex; gap:14px; align-items:center; flex-wrap:wrap; background:var(--sand); border-radius:8px;
-    padding:12px 16px; margin:14px 0; font-family:system-ui,sans-serif; font-size:.95rem}
-  .area-row input{width:90px; padding:7px 9px; border:1.5px solid var(--line); border-radius:6px; font-size:1rem; font-family:inherit}
-  .area-total{color:var(--moss)}
-  .rtf-callout{background:#fbf9f3; border-left:4px solid var(--sun); padding:12px 16px; border-radius:0 8px 8px 0;
-    font-family:system-ui,sans-serif; font-size:.92rem; margin:14px 0}
-  .honesty{font-family:system-ui,sans-serif; font-size:.85rem; margin-top:10px}
-
-  .disclosure-inline{background:var(--sand); border-left:4px solid var(--sun); padding:11px 15px; border-radius:0 8px 8px 0;
-    font-family:system-ui,sans-serif; font-size:.85rem; color:#4a574c; margin:6px 0 16px}
-  .retail-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px}
-  @media(max-width:680px){.retail-grid{grid-template-columns:1fr}}
-  .retail-card{background:#fff; border:1.5px solid var(--line); border-radius:10px; padding:16px; display:flex; flex-direction:column; gap:6px}
-  .retail-name{font-weight:700; color:var(--moss); font-size:1.05rem}
-  .retail-brand{font-family:system-ui,sans-serif; font-size:.8rem}
-  .retail-why{font-family:system-ui,sans-serif; font-size:.88rem; color:#4a574c; margin:2px 0 8px; line-height:1.45; flex-grow:1}
-  .retail-status{font-family:system-ui,sans-serif; font-size:.76rem; margin-top:6px}
-
-  table.score-table{width:100%; border-collapse:collapse; margin:12px 0; font-size:.92rem; font-family:system-ui,sans-serif}
-  table.score-table th{text-align:left; font-size:.74rem; text-transform:uppercase; letter-spacing:.04em; color:#6b7a6e; border-bottom:2px solid var(--line); padding:7px 9px}
-  table.score-table td{border-bottom:1px solid var(--line); padding:8px 9px; font-variant-numeric:tabular-nums}
-  table.score-table td:not(:first-child), table.score-table th:not(:first-child){text-align:center}
-
-  #boot-error{display:none; margin:24px; padding:16px; border:1px solid #9a3b3b; background:#f6dede; color:#9a3b3b; border-radius:8px; font-family:system-ui,sans-serif}
-</style>
+<title>LawnSeedPicker — What grass seed should I plant?</title>
+<meta name="description" content="A free tool that answers 'what should I plant?' for your lawn — based on your conditions, with seed recommendations grounded in university extension data. Launching August 2026.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="/index.html">Lawn<span>Seed</span>Picker</a>
-    <span class="muted" style="font-family:system-ui,sans-serif;font-size:.8rem">calculator build</span>
+    <a class="brand" href="index.html">Lawn<span>Seed</span>Picker</a>
+    <nav>
+      <a href="guides.html">Guides</a>
+      <a href="where-to-buy-grass-seed.html">Where to buy</a>
+      <a href="disclosure.html">Disclosure</a>
+    </nav>
   </div>
 </header>
 
-<main>
+<section class="hero">
   <div class="wrap">
-    <div id="app"></div>
-    <div id="boot-error">
-      <strong>The calculator didn't load.</strong>
-      <div>If you opened this file directly, the React modules are fetched from a CDN (esm.sh) and need an internet
-      connection on first load. Check your connection and refresh.</div>
+    <span class="pill"><span class="dot"></span>Free tool — no signup, nothing leaves your browser</span>
+    <p class="eyebrow">Tried-and-true picks for your yard</p>
+    <h1>What grass seed should I&nbsp;plant?</h1>
+    <p class="lede">Tell us your zip code, how much sun you get, whether kids and dogs use the yard, and how much work you want to put in. We'll point you to the seed that actually fits — plus exactly how much to throw down and when.</p>
+    <a class="btn" href="/picker/">Find your grass seed&nbsp;&rarr;</a>
+    <a class="btn ghost" href="#how" style="margin-left:10px">See how it works</a>
+    <p class="muted" style="margin-top:18px;font-size:.9rem">Every recommendation is backed by USDA and university extension research — not guesswork.</p>
+  </div>
+</section>
+
+<hr class="seedrow">
+
+<main id="how">
+  <div class="wrap">
+    <h2>One straight answer, instead of ten lists</h2>
+    <p>Search "best grass seed for shade and dogs" and you'll get a dozen articles that each answer one condition and never the combination you actually have. LawnSeedPicker asks about your real yard and gives you a single recommendation built for it.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Picks for your area</h3>
+        <p>Your zip sets your growing zone, the right cool- or warm-season species, and your seeding window.</p>
+      </div>
+      <div class="card">
+        <h3>Matched to your yard</h3>
+        <p>Sun, traffic from kids and pets, watering effort, and whether you're open to clover all shape the result.</p>
+      </div>
+      <div class="card">
+        <h3>How much, and when</h3>
+        <p>Exact pounds to throw down for your project, and the right time of year to do it.</p>
+      </div>
+    </div>
+
+    <h2>Grounded in extension data, not guesswork</h2>
+    <p>The seed characteristics behind every recommendation — shade and drought tolerance, wear, seeding rates — come from university extension programs and USDA fact sheets, cross-checked across sources. Where credible sources disagree, we keep the range honest rather than picking a number out of the air.</p>
+
+    <h2>Open to clover, too</h2>
+    <p>If you want a lower-input lawn, clover and microclover are first-class options here, not afterthoughts. You decide how far you want to go — grass only, a grass-and-clover mix, or a clover-forward lawn.</p>
+
+    <hr class="seedrow">
+
+    <h2>Try it now</h2>
+    <p>Answer a few quick questions about your yard — zip, sun, traffic, how much work you want to put in — and get a recommendation built for it in about half a minute. Free, no signup, and your zip never leaves your browser.</p>
+    <p><a class="btn" href="/picker/">Find your grass seed&nbsp;&rarr;</a></p>
+
+    <p>A few guides people ask for most:</p>
+    <ul>
+      <li><a href="where-to-buy-grass-seed.html">Where to buy good grass seed online</a> — who sells quality seed, and how to tell.</li>
+      <li><a href="restart-lawn-from-scratch.html">How to restart your lawn from scratch</a> — the full reset, step by step.</li>
+      <li><a href="when-to-plant-grass-seed.html">When to plant grass seed</a> — the best time to seed, by grass type and region.</li>
+      <li><a href="overseeding-fall-vs-spring.html">Overseeding: fall vs. spring</a> — how to thicken a lawn, and why fall wins.</li>
+      <li><a href="how-to-reseed-a-lawn.html">How to reseed a lawn</a> — fixing thin and bare patches, step by step.</li>
+    </ul>
+
+    <div class="disclosure">
+      <strong>How we keep the lights on:</strong> some links to seed retailers are (or will become) affiliate links — if you buy through them we may earn a small commission, at no extra cost to you. It never changes which seed we recommend. <a href="disclosure.html">Full disclosure</a>.
     </div>
   </div>
 </main>
 
-<footer style="border-top:2px solid var(--line); margin-top:48px; padding:22px 0">
+<footer class="site-foot">
   <div class="wrap">
-    <p class="muted" style="font-family:system-ui,sans-serif;font-size:.85rem;margin:0">Backed by USDA and university extension research.</p>
+    <a href="guides.html">Guides</a>
+    <a href="where-to-buy-grass-seed.html">Where to buy</a>
+    <a href="disclosure.html">Affiliate disclosure</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="cookies.html">Cookies</a>
+    <a href="disclaimer.html">Disclaimer</a>
+    <p class="legal">LawnSeedPicker provides general lawn-care guidance based on publicly available horticultural sources. Results vary with local conditions. Questions? <a href="mailto:hello@lawnseedpicker.com">hello@lawnseedpicker.com</a>. &copy; 2026 LawnSeedPicker.</p>
   </div>
 </footer>
-
-<script type="module">
-  window.addEventListener('error', (e) => {
-    if (String(e.message || '').match(/import|module|fetch/i)) {
-      document.getElementById('boot-error').style.display = 'block';
-    }
-  });
-  import('./src/main.js').catch((err) => {
-    console.error(err);
-    document.getElementById('boot-error').style.display = 'block';
-  });
-</script>
 
 </body>
 </html>
