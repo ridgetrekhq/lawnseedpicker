@@ -6,7 +6,7 @@
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
-  domyown: { name: 'DoMyOwn', url: '#', affiliate: true, status: 'pending' },
+  domyown: { name: 'DoMyOwn', url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Fgrass-seed-c-59_787_544.html', affiliate: true, status: 'approved' },
   andersons: { name: "The Andersons", url: '#', affiliate: true, status: 'pending' },
 };
 
@@ -22,7 +22,8 @@ const CATALOG = [
     brand: 'Barenbrug',
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'traffic', 'self_repair', 'drought'],
-    retailer: 'placeholder',
+    retailer: 'domyown',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Fstar-fescue-grass-seed-blend-p-3913.html',
     vendorClaim: true,
     why: 'Rhizomatous tall fescue that self-repairs worn spots — built for kids-and-pets traffic.',
   },
@@ -32,7 +33,8 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'drought', 'sun_shade'],
-    retailer: 'placeholder',
+    retailer: 'domyown',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Ffescue-grass-seed-c-59_787_544_1289.html',
     why: 'Deep-rooted, drought- and heat-tough tall fescue — the low-water workhorse for the Northeast.',
   },
   {
@@ -41,7 +43,8 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'kentucky_bluegrass', 'self_repair', 'traffic'],
-    retailer: 'placeholder',
+    retailer: 'domyown',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Fgrass-seed-c-59_787_544.html',
     why: 'Tall fescue toughness plus a little bluegrass to knit in and heal traffic damage.',
   },
   {
@@ -50,7 +53,8 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['cool', 'transition'],
     traits: ['hard_fescue', 'chewings_fescue', 'strong_creeping_red_fescue', 'sheep_fescue', 'shade', 'low_input'],
-    retailer: 'placeholder',
+    retailer: 'domyown',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Ffescue-grass-seed-c-59_787_544_1289.html',
     why: 'A blend of fine fescues — the go-to for shade and low-input lawns where bluegrass and rye give up.',
   },
   {
@@ -69,7 +73,8 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['warm', 'transition'],
     traits: ['bermudagrass', 'traffic', 'drought', 'sun_shade'],
-    retailer: 'placeholder',
+    retailer: 'domyown',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Fbermuda-grass-seed-c-59_787_544_1287.html',
     why: 'The full-sun, heat-and-traffic workhorse for the South — recovers fast from wear.',
   },
   {
@@ -105,7 +110,7 @@ export function pickRetailBlends({ season, baseId, traffic, alternatives }) {
   if (alternatives === 'mix' || alternatives === 'clover') want.add('clover');
 
   return CATALOG.filter((p) => p.seasons.includes(season))
-    .map((p) => ({ ...p, score: p.traits.filter((t) => want.has(t)).length, retailerInfo: RETAILERS[p.retailer] }))
+    .map((p) => ({ ...p, score: p.traits.filter((t) => want.has(t)).length, retailerInfo: { ...RETAILERS[p.retailer], ...(p.url && { url: p.url }) } }))
     .sort((a, b) => b.score - a.score)
     .slice(0, 3);
 }

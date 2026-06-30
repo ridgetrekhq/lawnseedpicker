@@ -71,34 +71,25 @@ function DiyRecipe({ blend }) {
 }
 
 function RetailBlends({ retail }) {
-  // Until affiliate programs approve, retailer links are placeholders ('#').
-  // Route those to our own buying guide — functional and honest. As real tracked
-  // URLs get filled into RETAILERS (data/retailers.js), they take over here
-  // automatically and open externally with rel="sponsored".
-  const GUIDE_URL = '/where-to-buy-grass-seed.html';
   return html`
     <section class="output">
       <h2>Buy it ready-made</h2>
       <p class="disclosure-inline">${FTC_DISCLOSURE}</p>
       <div class="retail-grid">
-        ${retail.map((p) => {
-          const hasLink = p.retailerInfo.url && p.retailerInfo.url !== '#';
-          const href = hasLink ? p.retailerInfo.url : GUIDE_URL;
-          return html`
+        ${retail.map(
+          (p) => html`
             <div class="retail-card" key=${p.id}>
               <div class="retail-name">${p.name}</div>
               <div class="retail-brand muted">${p.brand !== 'generic' ? p.brand : ''}</div>
               <p class="retail-why">${p.why}</p>
-              <a
-                class="btn ghost"
-                href=${href}
-                target=${hasLink ? '_blank' : undefined}
-                rel=${hasLink ? 'sponsored noopener' : undefined}>
-                ${hasLink ? 'Where to buy ›' : 'How to find it ›'}
-              </a>
-              <div class="retail-status muted">${hasLink ? p.retailerInfo.name : 'see our buying guide'}${p.vendorClaim ? ' · vendor claims' : ''}</div>
-            </div>`;
-        })}
+              ${p.retailerInfo.url === '#'
+                ? html`<span class="btn ghost" style="opacity:.5;cursor:default">Coming soon</span>`
+                : html`<a class="btn ghost" href=${p.retailerInfo.url} target="_blank" rel="noopener sponsored">
+                    Shop at ${p.retailerInfo.name} ${'›'}
+                  </a>`}
+              <div class="retail-status muted">${p.retailerInfo.name}${p.vendorClaim ? ' · vendor claims' : ''}</div>
+            </div>`
+        )}
       </div>
     </section>`;
 }
@@ -154,6 +145,7 @@ export function ResultScreen({ result, onBack }) {
       <button class="link-btn" onClick=${onBack}>← Change my answers</button>
       <h1>Here's what to plant</h1>
       <p class="lede">${lede}</p>
+      <p class="muted">Backed by USDA and university extension research.</p>
 
       <${WindowBanner} w=${window} />
       <${DiyRecipe} blend=${blend} />
