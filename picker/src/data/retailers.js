@@ -1,8 +1,8 @@
 // Retail blend catalog + retailer link map.
 //
 // SINGLE SOURCE OF TRUTH for affiliate links: every link points at a retailer
-// entry here. Real tracked URLs get swapped in one place as programs approve
-// (DoMyOwn / Andersons pending). Until then every link is a labeled placeholder.
+// entry here. DoMyOwn approved (7 of 8 products linked). Microclover remains
+// a labeled placeholder until a clover-carrying merchant approves.
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
@@ -83,7 +83,8 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['warm', 'transition'],
     traits: ['zoysiagrass', 'drought', 'sun_shade'],
-    retailer: 'placeholder',
+    retailer: 'domyown',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Fzenith-zoysia-grass-seed-p-3908.html',
     why: 'Dense, drought-tough turf that takes a little shade — slower to fill in, but low-fuss once established.',
   },
   {
@@ -92,7 +93,8 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['warm'],
     traits: ['bahiagrass', 'low_input', 'drought'],
-    retailer: 'placeholder',
+    retailer: 'domyown',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Fpennington-bahiagrass-pensacola-grass-seed-p-11457.html',
     why: 'A tough, low-maintenance choice for sandy Gulf and Florida lawns.',
   },
 ];
