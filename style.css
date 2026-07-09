@@ -91,3 +91,8 @@ article li{margin:.4em 0; max-width:64ch}
 /* focus visibility (quality floor) */
 a:focus-visible, .btn:focus-visible{outline:3px solid var(--sun); outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+/* ---- Yard photo figures ---- */
+figure.yard-photo{margin:2rem auto;max-width:480px;padding:0}
+figure.yard-photo img{width:100%;height:auto;display:block;border-radius:12px}
+figure.yard-photo figcaption{font-size:.9rem;line-height:1.5;margin-top:.55rem;color:var(--moss)}
