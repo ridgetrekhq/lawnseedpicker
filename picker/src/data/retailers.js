@@ -113,8 +113,18 @@ export function pickRetailBlends({ season, baseId, traffic, alternatives }) {
   }
   if (alternatives === 'mix' || alternatives === 'clover') want.add('clover');
 
-  return CATALOG.filter((p) => p.seasons.includes(season))
+  const ranked = CATALOG.filter((p) => p.seasons.includes(season))
     .map((p) => ({ ...p, score: p.traits.filter((t) => want.has(t)).length, retailerInfo: { ...RETAILERS[p.retailer], ...(p.url && { url: p.url }) } }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3);
+    .sort((a, b) => b.score - a.score);
+
+  const picks = ranked.slice(0, 3);
+
+  // If the blend includes clover, the clover seed is a recipe component —
+  // guarantee it a card rather than letting grass products outscore it.
+  if (want.has('clover') && !picks.some((p) => p.traits.includes('clover'))) {
+    const cloverPick = ranked.find((p) => p.traits.includes('clover'));
+    if (cloverPick) picks[picks.length - 1] = cloverPick;
+  }
+
+  return picks;
 }
