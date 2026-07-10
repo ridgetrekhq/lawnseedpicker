@@ -1,13 +1,14 @@
 // Retail blend catalog + retailer link map.
 //
 // SINGLE SOURCE OF TRUTH for affiliate links: every link points at a retailer
-// entry here. DoMyOwn approved (7 of 8 products linked). Microclover remains
-// a labeled placeholder until a clover-carrying merchant approves.
+// entry here. DoMyOwn approved (Awin); microclover via Amazon Associates
+// (8 of 8 products linked as of July 2026).
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
   domyown: { name: 'DoMyOwn', url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&ued=https%3A%2F%2Fwww.domyown.com%2Fgrass-seed-c-59_787_544.html', affiliate: true, status: 'approved' },
   andersons: { name: "The Andersons", url: '#', affiliate: true, status: 'pending' },
+  amazon: { name: 'Amazon', url: '#', affiliate: true, status: 'approved' },
 };
 
 // Must appear ADJACENT to the links (FTC), not just in the footer.
@@ -59,11 +60,12 @@ const CATALOG = [
   },
   {
     id: 'eco_microclover_mix',
-    name: 'Lawn + Microclover Eco Mix',
-    brand: 'generic',
+    name: 'Miniclover® Seed (blend into your lawn)',
+    brand: 'Outsidepride',
     seasons: ['cool', 'transition'],
     traits: ['clover', 'low_input'],
-    retailer: 'placeholder',
+    retailer: 'amazon',
+    url: 'https://www.amazon.com/dp/B00E255LIU?tag=lawnseedpicke-20&linkCode=ll2&linkId=2ab95bf75897c31a1fd10783cb393b89&language=en_US',
     vendorClaim: true,
     why: 'Adds nitrogen-fixing microclover for a lower-input, greener-longer lawn.',
   },
