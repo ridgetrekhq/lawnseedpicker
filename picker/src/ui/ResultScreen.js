@@ -72,8 +72,8 @@ function DiyRecipe({ blend }) {
 
 function RetailBlends({ retail }) {
   return html`
-    <section class="output">
-      <h2>Buy it ready-made</h2>
+    <section class="output" id="buy">
+      <h2>Buy this blend</h2>
       <p class="disclosure-inline">${FTC_DISCLOSURE}</p>
       <div class="retail-grid">
         ${retail.map(
@@ -84,7 +84,7 @@ function RetailBlends({ retail }) {
               <p class="retail-why">${p.why}</p>
               ${p.retailerInfo.url === '#'
                 ? html`<span class="btn ghost" style="opacity:.5;cursor:default">Coming soon</span>`
-                : html`<a class="btn ghost" href=${p.retailerInfo.url} target="_blank" rel="noopener sponsored">
+                : html`<a class="btn" href=${p.retailerInfo.url} target="_blank" rel="noopener sponsored">
                     Shop at ${p.retailerInfo.name} ${'›'}
                   </a>`}
               <div class="retail-status muted">${p.retailerInfo.name}${p.vendorClaim ? ' · vendor claims' : ''}</div>
@@ -146,6 +146,7 @@ export function ResultScreen({ result, onBack }) {
       <h1>Here's what to plant</h1>
       <p class="lede">${lede}</p>
       <p class="muted">Backed by USDA and university extension research.</p>
+      <p style=${{ margin: '.35rem 0 0' }}><a href="#buy" style=${{ color: 'var(--moss)', fontWeight: 600 }}>${'↓'} Skip to where to buy this blend</a></p>
 
       <${WindowBanner} w=${window} />
       <${DiyRecipe} blend=${blend} />
