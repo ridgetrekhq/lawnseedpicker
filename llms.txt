@@ -1,0 +1,27 @@
+# LawnSeedPicker
+
+> Free grass-seed recommendation tool for US homeowners. Enter a zip code, sun exposure, foot traffic, and maintenance preference and get a specific seed-blend recommendation — species percentages, seeding rate, and planting window — built from USDA plant fact sheets and university extension research (Rutgers, Penn State, Cornell, NC State). No signup, no data collection; the calculator runs entirely in the browser.
+
+LawnSeedPicker answers the question "what grass seed should I plant?" with one tailored recommendation instead of generic lists. It covers cool-season and warm-season species, grass-plus-microclover blends, and low-water and high-traffic yards.
+
+## Tool
+
+- [Grass seed picker](https://lawnseedpicker.com/picker/): The interactive calculator — zip code in, seed recommendation out
+
+## Guides
+
+- [When to plant grass seed](https://lawnseedpicker.com/when-to-plant-grass-seed): Seeding windows by region and species
+- [Drought-tolerant grass](https://lawnseedpicker.com/drought-tolerant-grass): Low-water species ranked, with dormancy vs. death guidance
+- [Clover lawns](https://lawnseedpicker.com/clover-lawn): Microclover and grass-clover blends, seeding rates, pros and cons
+- [How to reseed a lawn](https://lawnseedpicker.com/how-to-reseed-a-lawn): Step-by-step reseeding for thin or patchy lawns
+- [Overseeding: fall vs. spring](https://lawnseedpicker.com/overseeding-fall-vs-spring): Timing tradeoffs for cool- and warm-season lawns
+- [Restarting a lawn from scratch](https://lawnseedpicker.com/restart-lawn-from-scratch): Full kill-and-reseed process
+- [Watering new grass seed](https://lawnseedpicker.com/watering-new-grass-seed): Three-phase watering schedule and germination times by species
+- [Dog urine spots](https://lawnseedpicker.com/dog-urine-spots-lawn): Why spots happen and how to repair them
+- [Where to buy grass seed](https://lawnseedpicker.com/where-to-buy-grass-seed): Retailer comparison for quality seed
+- [All guides](https://lawnseedpicker.com/guides): Full guide index
+
+## About
+
+- [Affiliate disclosure](https://lawnseedpicker.com/disclosure): The site earns commissions on some retailer links
+- Contact: hello@lawnseedpicker.com
