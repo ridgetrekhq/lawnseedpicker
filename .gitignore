@@ -10,3 +10,7 @@ desktop.ini
 
 # Logs / scratch
 *.log
+
+CLAUDE.md
+.claude/
+.devcontainer/
