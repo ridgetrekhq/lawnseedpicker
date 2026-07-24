@@ -5,8 +5,17 @@
     <link>https://lawnseedpicker.com/guides.html</link>
     <description>Grass-seed and lawn-care guides, backed by USDA and university extension research.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jul 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://lawnseedpicker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>How Much Grass Seed Do I Need?</title>
+      <link>https://lawnseedpicker.com/how-much-grass-seed-do-i-need.html</link>
+      <guid isPermaLink="true">https://lawnseedpicker.com/how-much-grass-seed-do-i-need.html</guid>
+      <pubDate>Fri, 24 Jul 2026 12:00:00 +0000</pubDate>
+      <description>How much grass seed you need comes down to two numbers: your square footage and your grass type's seeding rate. Extension rates by species, plus why coated seed needs more. #grassseed #lawncare</description>
+      <enclosure url="https://lawnseedpicker.com/pins/how-much-grass-seed-do-i-need.png" type="image/png" length="100510"/>
+      <media:content url="https://lawnseedpicker.com/pins/how-much-grass-seed-do-i-need.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>How to Water New Grass Seed</title>
       <link>https://lawnseedpicker.com/watering-new-grass-seed.html</link>
