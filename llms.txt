@@ -10,6 +10,7 @@ LawnSeedPicker answers the question "what grass seed should I plant?" with one t
 
 ## Guides
 
+- [How much grass seed do I need](https://lawnseedpicker.com/how-much-grass-seed-do-i-need): Seeding rates by species, square-footage math, and the coated-seed and pure-live-seed adjustments
 - [When to plant grass seed](https://lawnseedpicker.com/when-to-plant-grass-seed): Seeding windows by region and species
 - [Drought-tolerant grass](https://lawnseedpicker.com/drought-tolerant-grass): Low-water species ranked, with dormancy vs. death guidance
 - [Clover lawns](https://lawnseedpicker.com/clover-lawn): Microclover and grass-clover blends, seeding rates, pros and cons
