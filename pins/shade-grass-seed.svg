@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500">
+  <rect width="1000" height="1500" fill="#f7f4ec"/>
+  <rect width="1000" height="500" fill="#3d5a40"/>
+  <rect x="80" y="492" width="840" height="8" fill="#e7b85c"/>
+  <text x="500" y="98" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="34" fill="#e7b85c" text-anchor="middle" letter-spacing="2">GRASS SEED FOR SHADE</text>
+  <text x="500" y="215" font-family="DejaVu Serif, serif" font-weight="bold" font-size="74" fill="#f7f4ec" text-anchor="middle">The Best Grass Seed</text>
+  <text x="500" y="307" font-family="DejaVu Serif, serif" font-weight="bold" font-size="74" fill="#f7f4ec" text-anchor="middle">for Shady Yards</text>
+  <text x="500" y="588" font-family="DejaVu Sans, sans-serif" font-size="38" fill="#233028" text-anchor="middle">Why fine fescue wins where bluegrass</text>
+  <text x="500" y="642" font-family="DejaVu Sans, sans-serif" font-size="38" fill="#233028" text-anchor="middle">and rye give up</text>
+  <circle cx="140" cy="762" r="31" fill="#6f9c5a"/>
+  <text x="140" y="775" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="38" fill="#f7f4ec" text-anchor="middle">1</text>
+  <text x="200" y="762" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="40" fill="#233028">Fine fescue</text>
+  <text x="200" y="806" font-family="DejaVu Sans, sans-serif" font-size="30" fill="#3d5a40">most shade-tolerant cool-season grass</text>
+  <circle cx="140" cy="906" r="31" fill="#6f9c5a"/>
+  <text x="140" y="919" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="38" fill="#f7f4ec" text-anchor="middle">2</text>
+  <text x="200" y="906" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="40" fill="#233028">Tall fescue</text>
+  <text x="200" y="950" font-family="DejaVu Sans, sans-serif" font-size="30" fill="#3d5a40">handles moderate / partial shade</text>
+  <circle cx="140" cy="1050" r="31" fill="#6f9c5a"/>
+  <text x="140" y="1063" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="38" fill="#f7f4ec" text-anchor="middle">3</text>
+  <text x="200" y="1050" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="40" fill="#233028">What to avoid</text>
+  <text x="200" y="1094" font-family="DejaVu Sans, sans-serif" font-size="30" fill="#3d5a40">Kentucky bluegrass, ryegrass, bermuda</text>
+  <rect x="0" y="1350" width="1000" height="150" fill="#233028"/>
+  <text x="500" y="1443" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="40" fill="#f7f4ec" text-anchor="middle">Match your yard at LawnSeedPicker.com</text>
+</svg>
