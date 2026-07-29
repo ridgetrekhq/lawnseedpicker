@@ -6,6 +6,29 @@
 <title>LawnSeedPicker — What should I plant?</title>
 <meta name="description" content="Free tool: tell us your zip and your yard, get the grass seed that actually fits — how much to throw down, and when. Grounded in university extension data.">
 <link rel="canonical" href="https://lawnseedpicker.com/picker/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://lawnseedpicker.com/picker/#webapplication",
+  "name": "LawnSeedPicker Grass Seed Picker",
+  "url": "https://lawnseedpicker.com/picker/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "description": "An interactive tool that takes a homeowner's zip code, sun exposure, foot traffic, and desired maintenance level, then returns a grass seed recommendation with the exact seeding rate and planting window, grounded in USDA and university extension data.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://lawnseedpicker.com/#organization",
+    "name": "LawnSeedPicker",
+    "url": "https://lawnseedpicker.com/"
+  }
+}
+</script>
 
 <!-- No-build React: react, react-dom, htm vendored locally in ./vendor/ (pinned
      18.3.1 / htm 3.1.1). No bundler, no server, and NO third-party requests at
@@ -213,7 +236,7 @@
 
 <main>
   <div class="wrap">
-    <div id="app"></div>
+    <div id="app"><h1>What grass seed should I plant?</h1></div>
     <div id="boot-error">
       <strong>The calculator didn't load.</strong>
       <div>Something went wrong loading the tool. Please refresh — if it keeps happening,
