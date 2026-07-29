@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" font-family="Georgia, 'Iowan Old Style', Palatino, serif">
+  <rect width="1000" height="1500" fill="#f7f4ec"/>
+  <rect x="0" y="0" width="1000" height="18" fill="#6f9c5a"/>
+
+  <text x="80" y="122" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="#6f9c5a" letter-spacing="1.5">EXTENSION-SOURCED DATA</text>
+
+  <text x="80" y="248" font-size="78" font-weight="700" fill="#3d5a40">Grass Seed Rates</text>
+  <text x="80" y="337" font-size="78" font-weight="700" fill="#3d5a40">by Species</text>
+
+  <text x="80" y="410" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" fill="#233028">How much seed per 1,000 sq ft — plus</text>
+  <text x="80" y="456" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" fill="#233028">seeds per pound, shade and drought</text>
+  <text x="80" y="502" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" fill="#233028">ratings, and what Pure Live Seed</text>
+  <text x="80" y="548" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" fill="#233028">really means.</text>
+
+  <rect x="80" y="596" width="840" height="4" fill="#d9cfba"/>
+
+  <rect x="80" y="636" width="840" height="432" rx="18" fill="#efe7d6" stroke="#d9cfba" stroke-width="2"/>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="36">
+    <text x="114" y="716" fill="#233028">Tall fescue</text>
+    <text x="886" y="716" fill="#3d5a40" font-weight="700" text-anchor="end">6–8 lb</text>
+
+    <text x="114" y="778" fill="#233028">Kentucky bluegrass</text>
+    <text x="886" y="778" fill="#3d5a40" font-weight="700" text-anchor="end">2–3 lb</text>
+
+    <text x="114" y="840" fill="#233028">Perennial ryegrass</text>
+    <text x="886" y="840" fill="#3d5a40" font-weight="700" text-anchor="end">4–6 lb</text>
+
+    <text x="114" y="902" fill="#233028">Fine fescues</text>
+    <text x="886" y="902" fill="#3d5a40" font-weight="700" text-anchor="end">4–6 lb</text>
+
+    <text x="114" y="964" fill="#233028">Bermudagrass</text>
+    <text x="886" y="964" fill="#3d5a40" font-weight="700" text-anchor="end">1–2 lb</text>
+
+    <text x="114" y="1026" fill="#233028">Bahiagrass</text>
+    <text x="886" y="1026" fill="#3d5a40" font-weight="700" text-anchor="end">5–10 lb</text>
+  </g>
+
+  <text x="80" y="1132" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="28" fill="#5e6b60">Rutgers · Cornell · Penn State · UMass · NC State · USDA NRCS</text>
+
+  <rect x="80" y="1350" width="840" height="4" fill="#d9cfba"/>
+  <text x="80" y="1424" font-size="42" font-weight="700" fill="#3d5a40">LawnSeedPicker.com</text>
+  <text x="920" y="1428" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="28" fill="#6f9c5a" text-anchor="end">Free seed calculator</text>
+
+  <rect x="0" y="1482" width="1000" height="18" fill="#e7b85c"/>
+</svg>

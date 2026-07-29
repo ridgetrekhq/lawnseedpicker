@@ -5,8 +5,17 @@
     <link>https://lawnseedpicker.com/guides.html</link>
     <description>Grass-seed and lawn-care guides, backed by USDA and university extension research.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jul 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://lawnseedpicker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Grass Seed Data: Seeding Rates, Seed Counts, and Tolerance Ratings by Species</title>
+      <link>https://lawnseedpicker.com/grass-seed-rates-and-facts.html</link>
+      <guid isPermaLink="true">https://lawnseedpicker.com/grass-seed-rates-and-facts.html</guid>
+      <pubDate>Wed, 29 Jul 2026 12:00:00 +0000</pubDate>
+      <description>Seeding rates, seeds per pound, and shade, drought, heat and wear tolerance ratings for 13 lawn grasses and clovers — every figure sourced to USDA and university extension publications. #grassseed #lawncare</description>
+      <enclosure url="https://lawnseedpicker.com/pins/grass-seed-rates-and-facts.png" type="image/png" length="103786"/>
+      <media:content url="https://lawnseedpicker.com/pins/grass-seed-rates-and-facts.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>Best Grass Seed for Shade</title>
       <link>https://lawnseedpicker.com/shade-grass-seed.html</link>
