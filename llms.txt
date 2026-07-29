@@ -10,6 +10,7 @@ LawnSeedPicker answers the question "what grass seed should I plant?" with one t
 
 ## Guides
 
+- [Grass seed data: rates, seed counts & tolerance ratings](https://lawnseedpicker.com/grass-seed-rates-and-facts): Seeding rates, seeds per pound, and tolerance ratings for 13 lawn grasses and clovers, sourced to USDA and university extension publications
 - [Best grass seed for shade](https://lawnseedpicker.com/shade-grass-seed): Why fine fescue is the most shade-tolerant cool-season grass, where tall fescue fits, what to avoid, the 80/10/10 cool-season shade mix, and the four-hour light limit past which no seed works
 - [St. Augustine grass seed](https://lawnseedpicker.com/st-augustine-grass-seed): Why it can't be bought as seed, how to establish it from sod and plugs (with a worked quantity example), and seedable warm-season alternatives
 - [How much grass seed do I need](https://lawnseedpicker.com/how-much-grass-seed-do-i-need): Seeding rates by species, square-footage math, and the coated-seed and pure-live-seed adjustments
