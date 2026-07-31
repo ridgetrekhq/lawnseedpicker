@@ -101,7 +101,7 @@ export function buildBlend(input, ranked) {
   if (components.some((c) => c.id === 'tall_fescue')) {
     const tf = getSpecies('tall_fescue');
     const c = (tf.cultivars || []).find((x) => /RTF|Water ?Saver/i.test(x.name));
-    if (c) rtf = { name: 'RTF / Water Saver (Rhizomatous Tall Fescue, Barenbrug)', source: c.source_ids?.[0] || 'vendor' };
+    if (c) rtf = { name: 'Turf Saver RTF (Rhizomatous Tall Fescue, Barenbrug)', source: c.source_ids?.[0] || 'vendor' };
   }
 
   return { components, totalRatePer1000, projectFactor: factor, rtf, season: seasonOf(base.id) };

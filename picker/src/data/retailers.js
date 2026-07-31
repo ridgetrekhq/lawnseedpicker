@@ -27,12 +27,12 @@ export const FTC_DISCLOSURE =
 const CATALOG = [
   {
     id: 'barenbrug_watersaver_rtf',
-    name: 'Water Saver® with RTF',
+    name: 'Turf Saver® RTF®',
     brand: 'Barenbrug',
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'traffic', 'self_repair', 'drought'],
     retailer: 'domyown',
-    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-rtf&ued=https%3A%2F%2Fwww.domyown.com%2Fstar-fescue-grass-seed-blend-p-3913.html',
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-rtf&ued=https%3A%2F%2Fwww.domyown.com%2Fbarenbrug-turf-saver-rtf-rhizomatous-tall-fescue-with-yellow-jacket-p-24179.html',
     vendorClaim: true,
     why: 'Rhizomatous tall fescue that self-repairs worn spots — built for kids-and-pets traffic.',
   },
