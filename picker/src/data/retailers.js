@@ -1,16 +1,31 @@
 // Retail blend catalog + retailer link map.
 //
 // SINGLE SOURCE OF TRUTH for affiliate links: every link points at a retailer
-// entry here. DoMyOwn approved (Awin); microclover via Amazon Associates
+// entry here. DoMyOwn approved (Awin); three products via Amazon Associates
 // (8 of 8 products linked as of July 2026).
 //
 // Awin attribution: each DoMyOwn deep link carries a `clickref=picker-<product>`
 // label so per-product performance is visible in Awin reporting. clickref is a
-// passthrough label and does NOT change where the shopper lands. Two DoMyOwn
-// category URLs are each shared by two cards; the clickref is the only thing
-// that tells those cards apart. (Amazon links use the Associates tag, not
-// clickref; the pre-existing SiteStripe params on the microclover link are
-// left exactly as-is.)
+// passthrough label and does NOT change where the shopper lands. As of 7/31/26
+// every DoMyOwn card resolves to its own PRODUCT page — no two cards share a
+// category URL any more, so clickref is now a convenience rather than the only
+// way to tell cards apart. (Amazon links use the Associates tag, not clickref;
+// the pre-existing SiteStripe params on the microclover link are left as-is.)
+//
+// 7/31/26 category-page repoint. Three cool-season cards previously landed on
+// DoMyOwn CATEGORY pages, where 7 of 14 fescue products showed out of stock and
+// the shopper had to guess which one the picker meant. Verified 7/31/26:
+//   - DoMyOwn has NO in-stock tall-fescue + Kentucky-bluegrass mix. Both
+//     candidates (p-22486 Smart Seed Pro, p-8819 Smart Seed Fescue/Bluegrass)
+//     are discontinued and out of stock.
+//   - DoMyOwn has NO true fine-fescue product. The nearest, 5 Star Extreme
+//     Shade (p-24295), is 60% tall fescue — linking it from a card whose `why`
+//     says "a blend of fine fescues" would repeat the Barenbrug mismatch fixed
+//     earlier the same day.
+// Those two slots therefore moved to Amazon (Outsidepride, same supplier as the
+// microclover card). Lower commission rate than Awin's confirmed 6.0%, taken
+// deliberately: an accurate in-stock product beats a higher rate on a category
+// page that may not contain the recommended seed at all.
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
@@ -43,7 +58,14 @@ const CATALOG = [
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'drought', 'sun_shade'],
     retailer: 'domyown',
-    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-ttf-sunshade&ued=https%3A%2F%2Fwww.domyown.com%2Ffescue-grass-seed-c-59_787_544_1289.html',
+    // The Rebels Tall Fescue Blend, Powder Coated (p-8786). All tall fescue;
+    // vendor states "grows well in partial shade to full sun" and withstands
+    // heavy traffic and drought — matches this card's traits as written.
+    // Sizes on one page: 3 / 7 / 20 / 40 lb ($22.57–$110.07), buy-2 pricing.
+    // NOTE: Pennington states the varietal mix changes with availability and is
+    // not printed on the bag. Still 100% tall fescue, so no card claim breaks,
+    // but do not add cultivar-level claims to this card.
+    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-ttf-sunshade&ued=https%3A%2F%2Fwww.domyown.com%2Fthe-rebels-tall-fescue-blend-powder-coated-grass-seed-p-8786.html',
     why: 'Deep-rooted, drought- and heat-tough tall fescue — the low-water workhorse for the Northeast.',
   },
   {
@@ -52,8 +74,18 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'kentucky_bluegrass', 'self_repair', 'traffic'],
-    retailer: 'domyown',
-    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-tfkbg-mix&ued=https%3A%2F%2Fwww.domyown.com%2Fgrass-seed-c-59_787_544.html',
+    // Outsidepride Combat Extreme Northern Zone, 10 lb (B01C4R4M5K).
+    // Vendor states 90% turf-type tall fescue / 10% Kentucky bluegrass by
+    // weight, sown at 6-8 lb per 1,000 sq ft — the same rate the picker
+    // outputs for tall fescue. "A little bluegrass" in the `why` below is
+    // literally accurate at 10%.
+    // Other sizes: 5 lb B01C4R4J8A · 25 lb B0B13XHP9Y · 50 lb B0B142ZLHW.
+    // CAVEAT: the listing is positioned for USDA Zones 4-5 while this card also
+    // serves `transition`. Fine agronomically (TF+KBG is standard cool-season),
+    // but do not echo the vendor's zone framing in guide copy. Also note the
+    // vendor's own bullet copy miscalls this a "fine fescue mix" — it is not.
+    retailer: 'amazon',
+    url: 'https://www.amazon.com/dp/B01C4R4M5K?tag=lawnseedpicke-20',
     why: 'Tall fescue toughness plus a little bluegrass to knit in and heal traffic damage.',
   },
   {
@@ -62,8 +94,13 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['cool', 'transition'],
     traits: ['hard_fescue', 'chewings_fescue', 'strong_creeping_red_fescue', 'sheep_fescue', 'shade', 'low_input'],
-    retailer: 'domyown',
-    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-finefescue-shade&ued=https%3A%2F%2Fwww.domyown.com%2Ffescue-grass-seed-c-59_787_544_1289.html',
+    // Outsidepride Legacy Fine Fescue Mix, 10 lb (B004MN5NO4).
+    // Vendor states 20% hard fescue / 40% chewings / 40% creeping red — three
+    // of the four fine-fescue species in `traits` above, and NO tall fescue.
+    // This is the only accurate fine-fescue option found across both networks.
+    // Other size: 5 lb B004MNATTS.
+    retailer: 'amazon',
+    url: 'https://www.amazon.com/dp/B004MN5NO4?tag=lawnseedpicke-20',
     why: 'A blend of fine fescues — the go-to for shade and low-input lawns where bluegrass and rye give up.',
   },
   {
