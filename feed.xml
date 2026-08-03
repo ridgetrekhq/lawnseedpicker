@@ -5,8 +5,17 @@
     <link>https://lawnseedpicker.com/guides.html</link>
     <description>Grass-seed and lawn-care guides, backed by USDA and university extension research.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Jul 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://lawnseedpicker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Microclover vs. White Clover: What Actually Differs</title>
+      <link>https://lawnseedpicker.com/microclover-vs-white-clover.html</link>
+      <guid isPermaLink="true">https://lawnseedpicker.com/microclover-vs-white-clover.html</guid>
+      <pubDate>Sun, 02 Aug 2026 12:00:00 +0000</pubDate>
+      <description>Microclover isn't a different species from white clover — it's a dwarf selection of the same plant. What breeders actually changed, which one belongs in a lawn, and why the seeding rate on the bag isn't extension-verified. #microclover #cloverlawn</description>
+      <enclosure url="https://lawnseedpicker.com/pins/microclover-vs-white-clover.png" type="image/png" length="98380"/>
+      <media:content url="https://lawnseedpicker.com/pins/microclover-vs-white-clover.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>Grass Seed Data: Seeding Rates, Seed Counts, and Tolerance Ratings by Species</title>
       <link>https://lawnseedpicker.com/grass-seed-rates-and-facts.html</link>
