@@ -28,7 +28,7 @@ function DiyRecipe({ blend }) {
     <section class="output">
       <h2>Your custom blend</h2>
       <p class="muted">
-        Mixed by weight. Total seeding rate
+        Mixed by weight. Total seeding rate${' '}
         <strong>${fmt1(per1000)} lb per 1,000 sq ft</strong>
         ${blend.projectFactor < 1 ? ' (overseeding rate — about half a new lawn)' : ' (new-lawn rate)'}.
       </p>
