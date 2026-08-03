@@ -12,6 +12,16 @@
 // way to tell cards apart. (Amazon links use the Associates tag, not clickref;
 // the pre-existing SiteStripe params on the microclover link are left as-is.)
 //
+// 8/3/26 Amazon attribution split. All three Amazon cards below use tracking ID
+// `lsppicker-20`; every non-picker Amazon link on the site keeps
+// `lawnseedpicke-20`. Purpose: microclover (B00E255LIU) is linked from BOTH the
+// picker and clover-lawn.html, so picker-vs-content origin was unreadable and
+// microclover is ~35% of lifetime revenue. Amazon reporting splits by tracking
+// ID going forward; it does NOT backfill. Secondary benefit: the two slots
+// repointed to Amazon on 7/31 (tf_kbg_mix, dense_shade_fine_fescue) now report
+// separately from guide links, so the accuracy-over-commission tradeoff taken
+// that day becomes measurable.
+//
 // 7/31/26 category-page repoint. Three cool-season cards previously landed on
 // DoMyOwn CATEGORY pages, where 7 of 14 fescue products showed out of stock and
 // the shopper had to guess which one the picker meant. Verified 7/31/26:
@@ -85,7 +95,7 @@ const CATALOG = [
     // but do not echo the vendor's zone framing in guide copy. Also note the
     // vendor's own bullet copy miscalls this a "fine fescue mix" — it is not.
     retailer: 'amazon',
-    url: 'https://www.amazon.com/dp/B01C4R4M5K?tag=lawnseedpicke-20',
+    url: 'https://www.amazon.com/dp/B01C4R4M5K?tag=lsppicker-20',
     why: 'Tall fescue toughness plus a little bluegrass to knit in and heal traffic damage.',
   },
   {
@@ -100,7 +110,7 @@ const CATALOG = [
     // This is the only accurate fine-fescue option found across both networks.
     // Other size: 5 lb B004MNATTS.
     retailer: 'amazon',
-    url: 'https://www.amazon.com/dp/B004MN5NO4?tag=lawnseedpicke-20',
+    url: 'https://www.amazon.com/dp/B004MN5NO4?tag=lsppicker-20',
     why: 'A blend of fine fescues — the go-to for shade and low-input lawns where bluegrass and rye give up.',
   },
   {
@@ -110,7 +120,7 @@ const CATALOG = [
     seasons: ['cool', 'transition'],
     traits: ['clover', 'low_input'],
     retailer: 'amazon',
-    url: 'https://www.amazon.com/dp/B00E255LIU?tag=lawnseedpicke-20&linkCode=ll2&linkId=2ab95bf75897c31a1fd10783cb393b89&language=en_US',
+    url: 'https://www.amazon.com/dp/B00E255LIU?tag=lsppicker-20&linkCode=ll2&linkId=2ab95bf75897c31a1fd10783cb393b89&language=en_US',
     vendorClaim: true,
     why: 'Adds nitrogen-fixing microclover for a lower-input, greener-longer lawn.',
   },
