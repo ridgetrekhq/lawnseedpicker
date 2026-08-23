@@ -5,8 +5,17 @@
     <link>https://lawnseedpicker.com/guides.html</link>
     <description>Grass-seed and lawn-care guides, backed by USDA and university extension research.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Aug 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://lawnseedpicker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>How to Overseed Clover Into an Existing Lawn</title>
+      <link>https://lawnseedpicker.com/overseeding-with-clover.html</link>
+      <guid isPermaLink="true">https://lawnseedpicker.com/overseeding-with-clover.html</guid>
+      <pubDate>Sat, 22 Aug 2026 12:00:00 +0000</pubDate>
+      <description>You can add clover to a lawn you already have without starting over. When to overseed, the frost-seeding method most people have never heard of, how much seed to use, and step by step. #cloverlawn #overseeding</description>
+      <enclosure url="https://lawnseedpicker.com/pins/overseeding-with-clover.png" type="image/png" length="57280"/>
+      <media:content url="https://lawnseedpicker.com/pins/overseeding-with-clover.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>Microclover vs. White Clover: What Actually Differs</title>
       <link>https://lawnseedpicker.com/microclover-vs-white-clover.html</link>

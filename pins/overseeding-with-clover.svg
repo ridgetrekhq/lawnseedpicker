@@ -1,0 +1,11 @@
+<!-- Approximates the shipped PNG (pins/overseeding-with-clover.png); not a byte-exact source. The rendered PNG uses slightly larger type (96/46 vs. this file's 90/40) and slightly different rule/wordmark y-offsets. Do not regenerate the PNG from this SVG expecting a pixel match. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500">
+  <rect width="1000" height="1500" fill="#3d5a40"/>
+  <text x="90" y="528" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="90" fill="#f7f4ec">Overseeding</text>
+  <text x="90" y="643" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="90" fill="#f7f4ec">with clover?</text>
+  <text x="90" y="758" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="90" fill="#f7f4ec">You need</text>
+  <text x="90" y="873" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="90" fill="#f7f4ec">almost none.</text>
+  <rect x="90" y="918" width="170" height="10" fill="#e7b85c"/>
+  <text x="90" y="990" font-family="DejaVu Sans, sans-serif" font-size="40" fill="#e7b85c">Why the rate is nothing like grass.</text>
+  <text x="500" y="1400" font-family="DejaVu Sans, sans-serif" font-size="30" fill="#6f9c5a" text-anchor="middle">lawnseedpicker.com</text>
+</svg>
