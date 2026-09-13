@@ -218,6 +218,30 @@
   table.score-table td{border-bottom:1px solid var(--line); padding:8px 9px; font-variant-numeric:tabular-nums}
   table.score-table td:not(:first-child), table.score-table th:not(:first-child){text-align:center}
 
+  /* --- static reference section (crawlable; below the tool) --- */
+  .static-ref{border-top:2px solid var(--line); margin-top:38px; padding-top:6px}
+  .static-ref h3{font-size:1.15rem; color:var(--moss); margin:1.6em 0 .4em}
+  .static-ref ol.inputs, .static-ref ul.gaps{max-width:66ch; padding-left:1.2em}
+  .static-ref ol.inputs li, .static-ref ul.gaps li{margin-bottom:9px}
+  .static-ref ul.gaps{font-size:.97rem}
+  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:16px 0}
+  table.species-ref{width:100%; border-collapse:collapse; font-size:.93rem; min-width:720px}
+  table.species-ref caption{caption-side:bottom; text-align:left; font-family:system-ui,sans-serif;
+    font-size:.82rem; color:#6b7a6e; padding-top:10px; line-height:1.45}
+  table.species-ref th[scope=col]{text-align:left; font-family:system-ui,sans-serif; font-size:.74rem;
+    text-transform:uppercase; letter-spacing:.05em; color:#6b7a6e; border-bottom:2px solid var(--line);
+    padding:8px 9px; vertical-align:bottom}
+  table.species-ref th[scope=col] .unit{display:block; text-transform:none; letter-spacing:0;
+    font-size:.72rem; color:#8a8470; font-weight:400}
+  table.species-ref th[scope=row]{text-align:left; font-weight:400; border-bottom:1px solid var(--line);
+    padding:9px; vertical-align:top}
+  table.species-ref td{border-bottom:1px solid var(--line); padding:9px; vertical-align:top;
+    font-family:system-ui,sans-serif; font-size:.88rem}
+  table.species-ref td.num{font-variant-numeric:tabular-nums; white-space:nowrap}
+  .sp-name{font-family:inherit; font-size:1rem; font-weight:700; color:var(--moss)}
+  .sp-sci{display:block; font-family:system-ui,sans-serif; font-size:.76rem; color:#8a8470; font-style:italic; line-height:1.3}
+  .nodata{color:#9a9484; font-family:system-ui,sans-serif; font-size:.85rem}
+
   #boot-error{display:none; margin:24px; padding:16px; border:1px solid #9a3b3b; background:#f6dede; color:#9a3b3b; border-radius:8px; font-family:system-ui,sans-serif}
 </style>
 </head>
@@ -237,23 +261,228 @@
 <main>
   <div class="wrap">
     <div id="app"><h1>What grass seed should I plant?</h1></div>
-    <div id="boot-error">
-      <strong>The calculator didn't load.</strong>
-      <div>Something went wrong loading the tool. Please refresh — if it keeps happening,
-      let us know at <a href="mailto:hello@lawnseedpicker.com">hello@lawnseedpicker.com</a>.</div>
-    </div>
+    <div id="boot-error" role="alert"></div>
+
+    <section class="static-ref" id="reference">
+      <h2>What this tool does</h2>
+      <p>LawnSeedPicker is a free grass seed selector. It asks seven questions about your yard and
+      returns a species recommendation, the seeding rate in pounds per 1,000 square feet, and the
+      planting window for your region. Nothing is sent to a server &mdash; the calculation runs in
+      your browser and your zip code stays on your device.</p>
+
+      <p>The seven questions are:</p>
+      <ol class="inputs">
+        <li><strong>Where's your lawn?</strong> Your zip code, which sets your region (cool-season,
+        transition or warm-season) and your seeding window.</li>
+        <li><strong>What are you doing?</strong> Starting a new lawn, overseeding an existing one,
+        starting over from scratch, or patching bare spots. This sets the seeding rate &mdash; a new
+        lawn takes roughly three times what overseeding takes.</li>
+        <li><strong>How much sun does it get?</strong> Full sun (6+ hours), partial sun (3&ndash;6 hours),
+        or mostly shade (under 3 hours).</li>
+        <li><strong>Who uses the yard?</strong> Kids and pets, dogs specifically, normal foot traffic,
+        or light use.</li>
+        <li><strong>How much work do you want to put in?</strong> Minimal water and mowing, a
+        reasonable amount, or whatever it takes.</li>
+        <li><strong>Open to clover?</strong> Grass only, grass with a little clover, or a
+        clover-forward eco-lawn.</li>
+        <li><strong>Know your soil?</strong> Sandy, clay, loam, or not sure. Optional.</li>
+      </ol>
+
+      <h2>The 13 species the picker chooses among</h2>
+      <p>Every species below is drawn from a database of USDA plant fact sheets and university
+      extension publications. Seeding rates are for establishing a new lawn, in pounds per 1,000
+      square feet, at 100% of that species. Tolerance ratings use a five-step scale &mdash; very poor,
+      poor, fair, good, excellent &mdash; mapped from the wording in the source documents. Where sources
+      disagree, the range is kept rather than averaged. Where no source states a rating, the cell
+      reads <em>n/a</em> rather than being filled in.</p>
+
+      <div class="table-scroll">
+        <table class="species-ref">
+          <caption>Grass and clover species in the LawnSeedPicker database, with new-lawn seeding
+          rates and tolerance ratings from USDA and university extension sources.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Species</th>
+              <th scope="col">Type</th>
+              <th scope="col">Growth habit</th>
+              <th scope="col">New-lawn rate
+                <span class="unit">lb/1,000 sq ft</span></th>
+              <th scope="col">Shade</th>
+              <th scope="col">Drought</th>
+              <th scope="col">Heat</th>
+              <th scope="col">Cold</th>
+              <th scope="col">Wear</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <th scope="row"><span class="sp-name">Kentucky bluegrass</span>
+          <span class="sp-sci">Poa pratensis L.</span></th>
+        <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
+        <td>Rhizomatous</td>
+        <td class="num">2–3</td>
+        <td>Poor</td><td>Good</td><td>Fair</td><td>Good</td><td>Fair</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Perennial ryegrass</span>
+          <span class="sp-sci">Lolium perenne L.</span></th>
+        <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
+        <td>Bunch</td>
+        <td class="num">4–6</td>
+        <td>Poor</td><td>Good</td><td>Poor–fair</td><td>Poor–fair</td><td>Excellent</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Tall fescue</span>
+          <span class="sp-sci">Lolium arundinaceum (Schreb.) S.J. Darbyshire</span></th>
+        <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
+        <td>Bunch</td>
+        <td class="num">6–8</td>
+        <td>Fair–good</td><td>Fair–excellent</td><td>Excellent</td><td>Fair–excellent</td><td>Fair–excellent</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Hard fescue</span>
+          <span class="sp-sci">Festuca brevipila (Tracey)</span></th>
+        <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
+        <td>Bunch</td>
+        <td class="num">4–6</td>
+        <td>Fair–excellent</td><td>Good–excellent</td><td>Poor–fair</td><td>Good</td><td>Poor</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Chewings fescue</span>
+          <span class="sp-sci">Festuca rubra ssp. commutata</span></th>
+        <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
+        <td>Bunch</td>
+        <td class="num">4–6</td>
+        <td>Excellent</td><td>Excellent</td><td>Poor–fair</td><td>Good</td><td>Poor</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Strong creeping red fescue</span>
+          <span class="sp-sci">Festuca rubra ssp. rubra</span></th>
+        <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
+        <td>Rhizomatous</td>
+        <td class="num">4–6</td>
+        <td>Excellent</td><td>Excellent</td><td>Poor–fair</td><td>Good</td><td>Poor</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Sheep fescue</span>
+          <span class="sp-sci">Festuca ovina L.</span></th>
+        <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
+        <td>Bunch</td>
+        <td class="num">4–6</td>
+        <td>Fair</td><td>Good</td><td><span class="nodata" title="No rating in sources">n/a</span></td><td>Excellent</td><td>Fair</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">White clover</span>
+          <span class="sp-sci">Trifolium repens L.</span></th>
+        <td><span class="cat cat-legume">Legume</span></td>
+        <td>Stoloniferous</td>
+        <td class="num"><span class="nodata">n/a</span></td>
+        <td>Good</td><td>Good</td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td>Good</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Bermudagrass</span>
+          <span class="sp-sci">Cynodon dactylon (L.) Pers.</span></th>
+        <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
+        <td>Rhizomes + stolons</td>
+        <td class="num">1–2</td>
+        <td>Very poor</td><td>Excellent</td><td>Excellent</td><td>Poor–good</td><td>Excellent</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Zoysiagrass</span>
+          <span class="sp-sci">Zoysia Willd.</span></th>
+        <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
+        <td>Not stated in sources</td>
+        <td class="num">1–2</td>
+        <td>Good–excellent</td><td>Good–excellent</td><td>Good–excellent</td><td>Good–excellent</td><td>Good–excellent</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Buffalograss</span>
+          <span class="sp-sci">Bouteloua dactyloides (Nutt.) J.T. Columbus</span></th>
+        <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
+        <td>Stoloniferous</td>
+        <td class="num">3–5</td>
+        <td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Bahiagrass</span>
+          <span class="sp-sci">Paspalum notatum Flueggé</span></th>
+        <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
+        <td>Rhizomes + stolons</td>
+        <td class="num">5–10</td>
+        <td>Poor–good</td><td>Excellent</td><td>Good–excellent</td><td>Poor</td><td>Good</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="sp-name">Microclover</span> <span class="tag tag-warn">unverified</span>
+          <span class="sp-sci">Trifolium repens var. (dwarf microclover selections)</span></th>
+        <td><span class="cat cat-legume">Legume</span></td>
+        <td>Stoloniferous</td>
+        <td class="num">1–2</td>
+        <td>Poor–good</td><td><span class="nodata" title="No rating in sources">n/a</span></td><td>Good</td><td>Fair–good</td><td><span class="nodata" title="No rating in sources">n/a</span></td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Gaps in the data, stated rather than filled</h3>
+      <ul class="gaps">
+        <li><strong>White clover has no seeding rate here.</strong> No USDA or extension publication
+        we hold states a white clover rate in pounds per 1,000 square feet for lawn use &mdash; the
+        published rates are for forage and cover-crop stands in pounds per acre, which is a
+        different job. Seed vendors publish lawn rates; extension does not. Rather than convert a
+        forage rate and present it as a lawn rate, the field is left empty.</li>
+        <li><strong>Buffalograss ratings are descriptive only.</strong> The sources describe its
+        drought, wear, cold and salt behaviour in prose without assigning a rating that maps onto
+        the five-step scale, and none of them addresses shade at all.</li>
+        <li><strong>Microclover is the one unverified record.</strong> Dwarf microclover selections
+        are a commercial category rather than a botanical one, and the figures available for them
+        come from vendors rather than extension programs. It is included because people ask for it,
+        and flagged because the provenance is weaker.</li>
+        <li><strong>Four further cells are unrated:</strong> sheep fescue for heat, white clover for
+        heat and cold, and microclover for drought and wear. No source we hold addresses them.</li>
+      </ul>
+
+      <h2>Where the numbers come from</h2>
+      <p>The database draws on 28 publications: 10 USDA NRCS plant fact sheets, 12 university
+      extension documents &mdash; Penn State, Rutgers, Cornell, UMass, NC State and Clemson &mdash; and 6
+      vendor documents. Vendor figures are recorded for comparison and are marked as such; they
+      never establish a rate on their own, and a species is only treated as verified when an
+      extension or USDA source supports it.</p>
+
+      <p>An example of how a number gets set: tall fescue's 6&ndash;8 pounds per 1,000 square feet
+      clusters across seven extension sources. An older Rutgers sheet from 2004 gives 4&ndash;6, which
+      sits below that cluster and is recorded as a low outlier rather than folded into an average.
+      USDA's figure for tall fescue is given per acre for erosion control and forage, a different
+      use, so it is excluded from the lawn rate entirely.</p>
+
+      <p><a class="btn" href="#app">Use the selector&nbsp;&rarr;</a></p>
+    </section>
   </div>
 </main>
 
 <script type="module">
+  // The failure message is injected here rather than sitting in the static HTML.
+  // A display:none div is invisible to people but not to text extractors, which
+  // ignore CSS — a crawler would otherwise read "the calculator didn't load"
+  // as the second thing on the page.
+  function showBootError() {
+    const el = document.getElementById('boot-error');
+    if (!el || el.dataset.shown) return;
+    el.dataset.shown = '1';
+    el.innerHTML =
+      '<strong>The calculator didn\'t load.<\/strong>' +
+      '<div>Something went wrong loading the tool. Please refresh \u2014 if it keeps ' +
+      'happening, let us know at ' +
+      '<a href="mailto:hello@lawnseedpicker.com">hello@lawnseedpicker.com<\/a>.<\/div>';
+    el.style.display = 'block';
+  }
   window.addEventListener('error', (e) => {
     if (String(e.message || '').match(/import|module|fetch/i)) {
-      document.getElementById('boot-error').style.display = 'block';
+      showBootError();
     }
   });
   import('./src/main.js').catch((err) => {
     console.error(err);
-    document.getElementById('boot-error').style.display = 'block';
+    showBootError();
   });
 </script>
 
