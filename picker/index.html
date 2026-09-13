@@ -261,11 +261,7 @@
 <main>
   <div class="wrap">
     <div id="app"><h1>What grass seed should I plant?</h1></div>
-    <div id="boot-error">
-      <strong>The calculator didn't load.</strong>
-      <div>Something went wrong loading the tool. Please refresh — if it keeps happening,
-      let us know at <a href="mailto:hello@lawnseedpicker.com">hello@lawnseedpicker.com</a>.</div>
-    </div>
+    <div id="boot-error" role="alert"></div>
 
     <section class="static-ref" id="reference">
       <h2>What this tool does</h2>
@@ -309,7 +305,8 @@
               <th scope="col">Species</th>
               <th scope="col">Type</th>
               <th scope="col">Growth habit</th>
-              <th scope="col">New-lawn rate<span class="unit">lb/1,000 sq ft</span></th>
+              <th scope="col">New-lawn rate
+                <span class="unit">lb/1,000 sq ft</span></th>
               <th scope="col">Shade</th>
               <th scope="col">Drought</th>
               <th scope="col">Heat</th>
@@ -319,91 +316,104 @@
           </thead>
           <tbody>
       <tr>
-        <th scope="row"><span class="sp-name">Kentucky bluegrass</span><span class="sp-sci">Poa pratensis L.</span></th>
+        <th scope="row"><span class="sp-name">Kentucky bluegrass</span>
+          <span class="sp-sci">Poa pratensis L.</span></th>
         <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
         <td>Rhizomatous</td>
         <td class="num">2–3</td>
         <td>Poor</td><td>Good</td><td>Fair</td><td>Good</td><td>Fair</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Perennial ryegrass</span><span class="sp-sci">Lolium perenne L.</span></th>
+        <th scope="row"><span class="sp-name">Perennial ryegrass</span>
+          <span class="sp-sci">Lolium perenne L.</span></th>
         <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
         <td>Bunch</td>
         <td class="num">4–6</td>
         <td>Poor</td><td>Good</td><td>Poor–fair</td><td>Poor–fair</td><td>Excellent</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Tall fescue</span><span class="sp-sci">Lolium arundinaceum (Schreb.) S.J. Darbyshire</span></th>
+        <th scope="row"><span class="sp-name">Tall fescue</span>
+          <span class="sp-sci">Lolium arundinaceum (Schreb.) S.J. Darbyshire</span></th>
         <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
         <td>Bunch</td>
         <td class="num">6–8</td>
         <td>Fair–good</td><td>Fair–excellent</td><td>Excellent</td><td>Fair–excellent</td><td>Fair–excellent</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Hard fescue</span><span class="sp-sci">Festuca brevipila (Tracey)</span></th>
+        <th scope="row"><span class="sp-name">Hard fescue</span>
+          <span class="sp-sci">Festuca brevipila (Tracey)</span></th>
         <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
         <td>Bunch</td>
         <td class="num">4–6</td>
         <td>Fair–excellent</td><td>Good–excellent</td><td>Poor–fair</td><td>Good</td><td>Poor</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Chewings fescue</span><span class="sp-sci">Festuca rubra ssp. commutata</span></th>
+        <th scope="row"><span class="sp-name">Chewings fescue</span>
+          <span class="sp-sci">Festuca rubra ssp. commutata</span></th>
         <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
         <td>Bunch</td>
         <td class="num">4–6</td>
         <td>Excellent</td><td>Excellent</td><td>Poor–fair</td><td>Good</td><td>Poor</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Strong creeping red fescue</span><span class="sp-sci">Festuca rubra ssp. rubra</span></th>
+        <th scope="row"><span class="sp-name">Strong creeping red fescue</span>
+          <span class="sp-sci">Festuca rubra ssp. rubra</span></th>
         <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
         <td>Rhizomatous</td>
         <td class="num">4–6</td>
         <td>Excellent</td><td>Excellent</td><td>Poor–fair</td><td>Good</td><td>Poor</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Sheep fescue</span><span class="sp-sci">Festuca ovina L.</span></th>
+        <th scope="row"><span class="sp-name">Sheep fescue</span>
+          <span class="sp-sci">Festuca ovina L.</span></th>
         <td><span class="cat cat-cool_season_grass">Cool-season grass</span></td>
         <td>Bunch</td>
         <td class="num">4–6</td>
         <td>Fair</td><td>Good</td><td><span class="nodata" title="No rating in sources">n/a</span></td><td>Excellent</td><td>Fair</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">White clover</span><span class="sp-sci">Trifolium repens L.</span></th>
+        <th scope="row"><span class="sp-name">White clover</span>
+          <span class="sp-sci">Trifolium repens L.</span></th>
         <td><span class="cat cat-legume">Legume</span></td>
         <td>Stoloniferous</td>
         <td class="num"><span class="nodata">n/a</span></td>
         <td>Good</td><td>Good</td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td>Good</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Bermudagrass</span><span class="sp-sci">Cynodon dactylon (L.) Pers.</span></th>
+        <th scope="row"><span class="sp-name">Bermudagrass</span>
+          <span class="sp-sci">Cynodon dactylon (L.) Pers.</span></th>
         <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
         <td>Rhizomes + stolons</td>
         <td class="num">1–2</td>
         <td>Very poor</td><td>Excellent</td><td>Excellent</td><td>Poor–good</td><td>Excellent</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Zoysiagrass</span><span class="sp-sci">Zoysia Willd.</span></th>
+        <th scope="row"><span class="sp-name">Zoysiagrass</span>
+          <span class="sp-sci">Zoysia Willd.</span></th>
         <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
         <td>Not stated in sources</td>
         <td class="num">1–2</td>
         <td>Good–excellent</td><td>Good–excellent</td><td>Good–excellent</td><td>Good–excellent</td><td>Good–excellent</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Buffalograss</span><span class="sp-sci">Bouteloua dactyloides (Nutt.) J.T. Columbus</span></th>
+        <th scope="row"><span class="sp-name">Buffalograss</span>
+          <span class="sp-sci">Bouteloua dactyloides (Nutt.) J.T. Columbus</span></th>
         <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
         <td>Stoloniferous</td>
         <td class="num">3–5</td>
         <td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td><td><span class="nodata" title="No rating in sources">n/a</span></td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Bahiagrass</span><span class="sp-sci">Paspalum notatum Flueggé</span></th>
+        <th scope="row"><span class="sp-name">Bahiagrass</span>
+          <span class="sp-sci">Paspalum notatum Flueggé</span></th>
         <td><span class="cat cat-warm_season_grass">Warm-season grass</span></td>
         <td>Rhizomes + stolons</td>
         <td class="num">5–10</td>
         <td>Poor–good</td><td>Excellent</td><td>Good–excellent</td><td>Poor</td><td>Good</td>
       </tr>
       <tr>
-        <th scope="row"><span class="sp-name">Microclover</span> <span class="tag tag-warn">unverified</span><span class="sp-sci">Trifolium repens var. (dwarf microclover selections)</span></th>
+        <th scope="row"><span class="sp-name">Microclover</span> <span class="tag tag-warn">unverified</span>
+          <span class="sp-sci">Trifolium repens var. (dwarf microclover selections)</span></th>
         <td><span class="cat cat-legume">Legume</span></td>
         <td>Stoloniferous</td>
         <td class="num">1–2</td>
@@ -450,14 +460,29 @@
 </main>
 
 <script type="module">
+  // The failure message is injected here rather than sitting in the static HTML.
+  // A display:none div is invisible to people but not to text extractors, which
+  // ignore CSS — a crawler would otherwise read "the calculator didn't load"
+  // as the second thing on the page.
+  function showBootError() {
+    const el = document.getElementById('boot-error');
+    if (!el || el.dataset.shown) return;
+    el.dataset.shown = '1';
+    el.innerHTML =
+      '<strong>The calculator didn\'t load.<\/strong>' +
+      '<div>Something went wrong loading the tool. Please refresh \u2014 if it keeps ' +
+      'happening, let us know at ' +
+      '<a href="mailto:hello@lawnseedpicker.com">hello@lawnseedpicker.com<\/a>.<\/div>';
+    el.style.display = 'block';
+  }
   window.addEventListener('error', (e) => {
     if (String(e.message || '').match(/import|module|fetch/i)) {
-      document.getElementById('boot-error').style.display = 'block';
+      showBootError();
     }
   });
   import('./src/main.js').catch((err) => {
     console.error(err);
-    document.getElementById('boot-error').style.display = 'block';
+    showBootError();
   });
 </script>
 
