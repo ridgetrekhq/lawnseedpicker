@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7BKCVRXPB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L7BKCVRXPB');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LawnSeedPicker — What should I plant?</title>
 <meta name="description" content="Free tool: tell us your zip and your yard, get the grass seed that actually fits — how much to throw down, and when. Grounded in university extension data.">
@@ -31,8 +40,8 @@
 </script>
 
 <!-- No-build React: react, react-dom, htm vendored locally in ./vendor/ (pinned
-     18.3.1 / htm 3.1.1). No bundler, no server, and NO third-party requests at
-     runtime — nothing leaves the visitor's browser. -->
+     18.3.1 / htm 3.1.1). No bundler and no server; the calculator itself makes no
+     third-party requests at runtime. Site-wide analytics load separately from <head>. -->
 <script type="importmap">
 {
   "imports": {
@@ -267,8 +276,8 @@
       <h2>What this tool does</h2>
       <p>LawnSeedPicker is a free grass seed selector. It asks seven questions about your yard and
       returns a species recommendation, the seeding rate in pounds per 1,000 square feet, and the
-      planting window for your region. Nothing is sent to a server &mdash; the calculation runs in
-      your browser and your zip code stays on your device.</p>
+      planting window for your region. The calculation runs in your browser and your zip code
+      stays on your device.</p>
 
       <p>The seven questions are:</p>
       <ol class="inputs">
