@@ -1,8 +1,8 @@
 // Retail blend catalog + retailer link map.
 //
 // SINGLE SOURCE OF TRUTH for affiliate links: every link points at a retailer
-// entry here. DoMyOwn approved (Awin); three products via Amazon Associates
-// (8 of 8 products linked as of July 2026).
+// entry here. DoMyOwn approved (Awin); five products via Amazon Associates
+// (8 of 8 products linked as of July 2026; 5 Amazon / 3 DoMyOwn as of 9/20/26).
 //
 // Awin attribution: each DoMyOwn deep link carries a `clickref=picker-<product>`
 // label so per-product performance is visible in Awin reporting. clickref is a
@@ -12,7 +12,7 @@
 // way to tell cards apart. (Amazon links use the Associates tag, not clickref;
 // the pre-existing SiteStripe params on the microclover link are left as-is.)
 //
-// 8/3/26 Amazon attribution split. All three Amazon cards below use tracking ID
+// 8/3/26 Amazon attribution split. All Amazon cards below use tracking ID
 // `lsppicker-20`; every non-picker Amazon link on the site keeps
 // `lawnseedpicke-20`. Purpose: microclover (B00E255LIU) is linked from BOTH the
 // picker and clover-lawn.html, so picker-vs-content origin was unreadable and
@@ -36,6 +36,17 @@
 // microclover card). Lower commission rate than Awin's confirmed 6.0%, taken
 // deliberately: an accurate in-stock product beats a higher rate on a category
 // page that may not contain the recommended seed at all.
+//
+// 9/20/26 picker retailer split. Two more cards moved to Amazon (lsppicker-20):
+//   - bermuda_sun: was still on a DoMyOwn CATEGORY page (the 7/31 note above
+//     missed it). Now Hancock's uncoated common bermuda, the same product the
+//     guides link, so picker and guides agree.
+//   - ttf_sun_shade: was DoMyOwn "The Rebels", POWDER COATED. Coated seed
+//     conflicts with the /seed-bag-coverage-claims argument that coating
+//     inflates coverage claims. Now Jonathan Green Black Beauty Original.
+// Retired Awin clickrefs: picker-ttf-sunshade, picker-bermuda. RTF, zoysia and
+// bahia stay on DoMyOwn product pages (Amazon zoysia selection is thin; RTF
+// matches the guides; bahia is Gulf-only and low volume).
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
@@ -67,15 +78,19 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'drought', 'sun_shade'],
-    retailer: 'domyown',
-    // The Rebels Tall Fescue Blend, Powder Coated (p-8786). All tall fescue;
-    // vendor states "grows well in partial shade to full sun" and withstands
-    // heavy traffic and drought — matches this card's traits as written.
-    // Sizes on one page: 3 / 7 / 20 / 40 lb ($22.57–$110.07), buy-2 pricing.
-    // NOTE: Pennington states the varietal mix changes with availability and is
-    // not printed on the bag. Still 100% tall fescue, so no card claim breaks,
-    // but do not add cultivar-level claims to this card.
-    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-ttf-sunshade&ued=https%3A%2F%2Fwww.domyown.com%2Fthe-rebels-tall-fescue-blend-powder-coated-grass-seed-p-8786.html',
+    retailer: 'amazon',
+    // Jonathan Green Black Beauty Original Elite Blend, 7 lb (B0GTN8LXC2).
+    // Maker states 100% turf-type tall fescue (three cultivars), full sun or
+    // partial shade, deep-rooted and drought tolerant. Matches this card's
+    // traits and `why` as written. No seed coating found in any listing (the
+    // "waxy coating" in JG marketing refers to the leaf, not the seed).
+    // Cultivar split was confirmed only on the 15 lb listing, so do not add
+    // cultivar-level claims to this card.
+    // Sizes: 3 lb / 7 lb. The 5 lb bag is discontinued and B006MY6CYQ is the
+    // variation PARENT (no size preselected). Do not use it.
+    // Do NOT confuse with Black Beauty ULTRA, which adds Kentucky bluegrass and
+    // perennial ryegrass and would not fit this card.
+    url: 'https://www.amazon.com/dp/B0GTN8LXC2?tag=lsppicker-20',
     why: 'Deep-rooted, drought- and heat-tough tall fescue — the low-water workhorse for the Northeast.',
   },
   {
@@ -130,8 +145,11 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['warm', 'transition'],
     traits: ['bermudagrass', 'traffic', 'drought', 'sun_shade'],
-    retailer: 'domyown',
-    url: 'https://www.awin1.com/cread.php?awinmid=88419&awinaffid=2939417&clickref=picker-bermuda&ued=https%3A%2F%2Fwww.domyown.com%2Fbermuda-grass-seed-c-59_787_544_1287.html',
+    // Hancock's Common Bermuda, raw & hulled, 5 lb (B07NLFFXW1). Uncoated.
+    // Same product the guides link. Chosen over coated Pennington (Penkoted)
+    // and coated SeedRanch for consistency with the coverage-claims study.
+    retailer: 'amazon',
+    url: 'https://www.amazon.com/dp/B07NLFFXW1?tag=lsppicker-20',
     why: 'The full-sun, heat-and-traffic workhorse for the South — recovers fast from wear.',
   },
   {
