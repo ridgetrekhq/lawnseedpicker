@@ -1,0 +1,30 @@
+<!-- Teaser source for the already-rendered PNG (pins/seed-bag-coverage-claims.png, 62665 bytes); not a byte-exact source. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500">
+  <rect width="1000" height="1500" fill="#f7f4ec"/>
+  <rect x="0" y="0" width="1000" height="18" fill="#3d5a40"/>
+
+  <text x="80" y="396" font-family="Georgia, 'Iowan Old Style', Palatino, serif" font-weight="bold" font-size="78" fill="#233028" text-anchor="start">The big number</text>
+  <text x="80" y="524" font-family="Georgia, 'Iowan Old Style', Palatino, serif" font-weight="bold" font-size="78" fill="#233028" text-anchor="start">on the bag is</text>
+  <text x="80" y="652" font-family="Georgia, 'Iowan Old Style', Palatino, serif" font-weight="bold" font-size="78" fill="#233028" text-anchor="start">the overseeding</text>
+  <text x="80" y="780" font-family="Georgia, 'Iowan Old Style', Palatino, serif" font-weight="bold" font-size="78" fill="#233028" text-anchor="start">one.</text>
+
+  <rect x="80" y="686" width="220" height="8" fill="#e7b85c"/>
+
+  <text x="80" y="768" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="40" fill="#3d5a40" text-anchor="start">43 grass seed listings, checked</text>
+
+  <g>
+    <ellipse cx="140" cy="1060" rx="32" ry="20" fill="#6f9c5a"/>
+    <ellipse cx="230" cy="1060" rx="32" ry="20" fill="#e7b85c"/>
+    <ellipse cx="320" cy="1060" rx="32" ry="20" fill="#6f9c5a"/>
+    <ellipse cx="410" cy="1060" rx="32" ry="20" fill="#e7b85c"/>
+    <ellipse cx="500" cy="1060" rx="32" ry="20" fill="#6f9c5a"/>
+    <ellipse cx="590" cy="1060" rx="32" ry="20" fill="#e7b85c"/>
+    <ellipse cx="680" cy="1060" rx="32" ry="20" fill="#6f9c5a"/>
+    <ellipse cx="770" cy="1060" rx="32" ry="20" fill="#e7b85c"/>
+    <ellipse cx="860" cy="1060" rx="32" ry="20" fill="#6f9c5a"/>
+  </g>
+
+  <rect x="0" y="1350" width="1000" height="150" fill="#efe7d6"/>
+  <rect x="0" y="1350" width="1000" height="4" fill="#d9cfba"/>
+  <text x="80" y="1438" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="42" fill="#3d5a40" text-anchor="start">LawnSeedPicker.com</text>
+</svg>
