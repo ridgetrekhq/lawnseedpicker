@@ -63,10 +63,6 @@
 
     <p>For the extension-backed seeding rate for your grass and square footage, <a href="/picker/">start with the LawnSeedPicker calculator</a> &mdash; the figures below compare bag claims against it.</p>
 
-    <div class="disclosure">
-      <strong>Heads up:</strong> Some links on this page are affiliate links — if you buy through them we may earn a small commission at no extra cost to you. It doesn't change what we recommend. <a href="/disclosure">Full disclosure</a>.
-    </div>
-
     <h2>Two coverage numbers</h2>
     <p>Coverage claims for grass seed come in two forms: a new-lawn figure for bare soil, and a larger overseeding figure for thickening existing turf. Of the 43 products in this set, 16 publish both figures, 21 show one unlabeled number, and 6 show no coverage figure at all.<!-- src: data/README-dataset.md --> In all 16 bags that publish both, the overseeding figure is 2.0 to 3.3 times the new-lawn figure.<!-- src: data/seed-bag-coverage-2026.csv rows 7, 10, 12, 13, 15, 17, 19, 23, 24, 26, 27, 28, 33, 37, 39, 40 --></p>
 
@@ -177,7 +173,6 @@
 
     <h2>Where to go from here</h2>
     <p><a class="btn" href="/picker/">Get the extension rate for your grass and square footage&nbsp;&rarr;</a></p>
-    <p>The LawnSeedPicker calculator links these same products for those grasses: a <a href="https://www.amazon.com/dp/B0GTN8LXC2?tag=lawnseedpicke-20" rel="noopener sponsored" target="_blank">7 lb bag of Jonathan Green Black Beauty Original tall fescue blend</a> for tall fescue, and a <a href="https://www.amazon.com/dp/B07NLFFXW1?tag=lawnseedpicke-20" rel="noopener sponsored" target="_blank">5 lb bag of Hancock common bermudagrass seed</a> for bermudagrass.</p>
     <p>See also: <a href="/how-much-grass-seed-do-i-need">how much grass seed you need</a>, <a href="/where-to-buy-grass-seed">where to buy grass seed</a>, <a href="/overseeding-fall-vs-spring">overseeding: fall vs. spring</a>, and <a href="/grass-seed-rates-and-facts">the full grass seed data reference</a>.</p>
 
     <h2>How this study was done</h2>
@@ -187,6 +182,9 @@
     <p>Forage, pasture and food-plot products were collected but excluded from this set.<!-- src: data/README-dataset.md --></p>
     <p>Two rules govern the comparisons on this page: an unlabeled coverage figure is never compared against an extension rate, and a product named as a mix is never compared against a single-species extension rate — a blend is seeded at a rate for the blend as a whole, not the sum of its parts.<!-- src: data/README-dataset.md --> Coating status is recorded only where a listing or product name stated it; a blank in that column means not stated, not uncoated.<!-- src: data/README-dataset.md --></p>
     <p>The full dataset is available as <a href="/data/seed-bag-coverage-2026.csv">seed-bag-coverage-2026.csv</a>, documented in <a href="/data/README-dataset.md">README-dataset.md</a>. Licensed CC BY 4.0 — reuse freely with attribution to lawnseedpicker.com.<!-- src: data/README-dataset.md --></p>
+    <p>The dataset is archived on Zenodo with a permanent DOI:
+    <a href="https://doi.org/10.5281/zenodo.22967945">10.5281/zenodo.22967945</a>.
+    Use the citation shown on the Zenodo record.<!-- src: Zenodo record 10.5281/zenodo.22967945 --></p>
 
     <h2>What this study can't tell you</h2>
     <p>No seed analysis tag data is in this dataset. Purity, germination, weed seed, other crop content, inert matter and test date are lot-specific figures printed on the physical bag, not published online, so cost per pound of pure live seed cannot be computed from these listings.<!-- src: data/README-dataset.md --></p>
@@ -252,7 +250,12 @@
       "name": "Seed bag coverage dataset, 2026",
       "description": "43 retail grass seed products. Manufacturer coverage claims collected from public retail listings, compared against university extension seeding rates.",
       "license": "https://creativecommons.org/licenses/by/4.0/",
-      "creator": { "@type": "Organization", "name": "LawnSeedPicker" },
+      "identifier": "https://doi.org/10.5281/zenodo.22967945",
+      "sameAs": "https://doi.org/10.5281/zenodo.22967945",
+      "url": "https://lawnseedpicker.com/seed-bag-coverage-claims",
+      "isAccessibleForFree": true,
+      "creator": { "@type": "Person", "name": "Jon P." },
+      "publisher": { "@type": "Organization", "name": "LawnSeedPicker" },
       "temporalCoverage": "2026-09-07",
       "distribution": {
         "@type": "DataDownload",
