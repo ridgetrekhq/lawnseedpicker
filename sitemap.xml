@@ -25,8 +25,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lawnseedpicker.com/frost-seeding-clover</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lawnseedpicker.com/overseeding-with-clover</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
