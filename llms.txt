@@ -27,6 +27,7 @@ LawnSeedPicker answers the question "what grass seed should I plant?" with one t
 - [Overseeding clover into an existing lawn](https://lawnseedpicker.com/overseeding-with-clover): Adding clover to a lawn you already have — fall and spring timing, the frost-seeding method, how much seed, and why vendor rates disagree
 - [Grass seed bag coverage claims](https://lawnseedpicker.com/seed-bag-coverage-claims): 43 retail listings — new-lawn vs. overseeding coverage, coated vs. uncoated, listing rates vs. extension rates. Dataset CC BY 4.0.
 - [Frost seeding clover into a lawn](https://lawnseedpicker.com/frost-seeding-clover): When frost seeding works (thin turf, freeze–thaw soil) and when it fails (thick turf, thatch, sandy soil), timing by soil condition, and fall preparation
+- [Dormant seeding: does it really work?](https://lawnseedpicker.com/dormant-seeding): Minnesota and Nebraska extension on whether dormant seeding works, why soil temperature (not the calendar) decides when, and where the sources disagree on snow and site prep
 - [All guides](https://lawnseedpicker.com/guides): Full guide index
 
 ## About
