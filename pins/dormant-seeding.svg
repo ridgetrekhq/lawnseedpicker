@@ -1,0 +1,38 @@
+<svg width="1000" height="1500" viewBox="0 0 1000 1500" xmlns="http://www.w3.org/2000/svg">
+  <title>Dormant seeding: does it really work? — LawnSeedPicker</title>
+  <rect width="1000" height="1500" fill="#233028"/>
+
+  <!-- Eyebrow -->
+  <text x="500" y="260" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" letter-spacing="7" fill="#e7b85c">DORMANT SEEDING</text>
+
+  <!-- Headline -->
+  <text x="500" y="420" text-anchor="middle" font-family="Georgia, 'Palatino Linotype', Palatino, serif" font-size="92" fill="#f7f4ec">Does it really</text>
+  <text x="500" y="525" text-anchor="middle" font-family="Georgia, 'Palatino Linotype', Palatino, serif" font-size="92" fill="#f7f4ec">work?</text>
+
+  <!-- Subline -->
+  <text x="500" y="640" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" fill="#efe7d6">Sow after the soil turns cold.</text>
+  <text x="500" y="684" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" fill="#efe7d6">The seed waits for spring.</text>
+
+  <!-- Ground band -->
+  <rect x="0" y="1260" width="1000" height="240" fill="#3d5a40"/>
+
+  <!-- Three sprouts -->
+  <g stroke="#f7f4ec" stroke-width="6" stroke-linecap="round" fill="none">
+    <line x1="350" y1="1260" x2="350" y2="1180"/>
+    <line x1="500" y1="1260" x2="500" y2="1150"/>
+    <line x1="650" y1="1260" x2="650" y2="1190"/>
+  </g>
+  <g fill="#6f9c5a">
+    <path d="M350,1180 C320,1160 320,1120 350,1110 C380,1120 380,1160 350,1180 Z"/>
+    <path d="M350,1180 C380,1165 390,1135 370,1115 C345,1120 335,1155 350,1180 Z"/>
+
+    <path d="M500,1150 C465,1128 465,1083 500,1072 C535,1083 535,1128 500,1150 Z"/>
+    <path d="M500,1150 C535,1133 547,1098 524,1076 C495,1082 484,1122 500,1150 Z"/>
+
+    <path d="M650,1190 C620,1170 620,1130 650,1120 C680,1130 680,1170 650,1190 Z"/>
+    <path d="M650,1190 C680,1175 690,1145 670,1125 C645,1130 635,1165 650,1190 Z"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="500" y="1420" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#f7f4ec">LawnSeedPicker.com</text>
+</svg>

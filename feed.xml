@@ -5,8 +5,17 @@
     <link>https://lawnseedpicker.com/guides.html</link>
     <description>Grass-seed and lawn-care guides, backed by USDA and university extension research.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Oct 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://lawnseedpicker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Dormant Seeding a Lawn: Does It Really Work?</title>
+      <link>https://lawnseedpicker.com/dormant-seeding.html</link>
+      <guid isPermaLink="true">https://lawnseedpicker.com/dormant-seeding.html</guid>
+      <pubDate>Sun, 04 Oct 2026 12:00:00 +0000</pubDate>
+      <description>Dormant seeding means sowing grass seed after the soil turns cold so it sprouts in spring. What Minnesota and Nebraska extension say about whether it works, when to do it, and what can go wrong. #dormantseeding #lawncare</description>
+      <enclosure url="https://lawnseedpicker.com/pins/dormant-seeding.png" type="image/png" length="75624"/>
+      <media:content url="https://lawnseedpicker.com/pins/dormant-seeding.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>Does Frost Seeding Clover Into a Lawn Work?</title>
       <link>https://lawnseedpicker.com/frost-seeding-clover.html</link>
