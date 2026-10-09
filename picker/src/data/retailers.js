@@ -47,6 +47,14 @@
 // Retired Awin clickrefs: picker-ttf-sunshade, picker-bermuda. RTF, zoysia and
 // bahia stay on DoMyOwn product pages (Amazon zoysia selection is thin; RTF
 // matches the guides; bahia is Gulf-only and low volume).
+//
+// 10/8/26 Lasso link on the microclover card. eco_microclover_mix now uses a
+// Lasso marketplace link (lasso.to). Lasso pays the commission and the link
+// carries NO Amazon tag, so these clicks and orders leave the Amazon Associates
+// report (read them in Lasso). The shopper still lands on Amazon at ASIN
+// B00E255LIU, so `retailer` stays 'amazon'. Use the link exactly as supplied:
+// never append a tag or any parameter. Previous value: ASIN B00E255LIU on
+// lsppicker-20 (with SiteStripe params). Guide links to this ASIN are unchanged.
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
@@ -135,7 +143,7 @@ const CATALOG = [
     seasons: ['cool', 'transition'],
     traits: ['clover', 'low_input'],
     retailer: 'amazon',
-    url: 'https://www.amazon.com/dp/B00E255LIU?tag=lsppicker-20&linkCode=ll2&linkId=2ab95bf75897c31a1fd10783cb393b89&language=en_US',
+    url: 'https://lasso.to/ErLQI50mGb/',
     vendorClaim: true,
     why: 'Adds nitrogen-fixing microclover for a lower-input, greener-longer lawn.',
   },
