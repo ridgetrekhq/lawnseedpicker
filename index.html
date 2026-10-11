@@ -94,7 +94,7 @@
     <p class="eyebrow">A free lawn seed selector tool</p>
     <h1>Grass seed selector: what should I&nbsp;plant?</h1>
     <p class="lede">Tell us your zip code, how much sun you get, whether kids and dogs use the yard, and how much work you want to put in. We'll point you to the seed that actually fits — plus exactly how much to throw down and when.</p>
-    <a class="btn" href="/picker/">Find your grass seed&nbsp;&rarr;</a>
+    <a class="btn" href="/picker/" data-cta="hero">Find your grass seed&nbsp;&rarr;</a>
     <a class="btn ghost" href="#how" style="margin-left:10px">See how it works</a>
     <p class="muted" style="margin-top:18px;font-size:.9rem">Every recommendation is backed by USDA and university extension research — not guesswork.</p>
   </div>
@@ -132,7 +132,7 @@
 
     <h2>Try the seed selector now</h2>
     <p>Answer a few quick questions about your yard — zip, sun, traffic, how much work you want to put in — and get a recommendation built for it in about half a minute. Free, no signup, and your zip never leaves your browser.</p>
-    <p><a class="btn" href="/picker/">Find your grass seed&nbsp;&rarr;</a></p>
+    <p><a class="btn" href="/picker/" data-cta="lower">Find your grass seed&nbsp;&rarr;</a></p>
 
     <p>A few guides people ask for most:</p>
     <ul>
@@ -160,6 +160,16 @@
     <p class="legal">LawnSeedPicker is a free grass seed recommendation tool that matches homeowners to seed types using USDA and university extension data. Results vary with local conditions. Questions? <a href="mailto:hello@lawnseedpicker.com">hello@lawnseedpicker.com</a>. &copy; 2026 LawnSeedPicker.</p>
   </div>
 </footer>
+
+<script>
+  // Homepage handoff (plan task 3, 10/11/26): record a click on either
+  // calculator button, so GA4 shows how many homepage visitors go on to /picker/.
+  document.querySelectorAll('a[data-cta]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { if (typeof gtag === 'function') gtag('event', 'home_to_picker', { cta: a.getAttribute('data-cta') }); } catch (e) {}
+    });
+  });
+</script>
 
 </body>
 </html>
