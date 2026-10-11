@@ -7,6 +7,7 @@ import { Field, OptionCards } from './components.js';
 import { resolveZip, prefixLabel } from '../engine/zip.js';
 import { recommend } from '../engine/recommend.js';
 import { ResultScreen } from './ResultScreen.js';
+import { track, trackStartOnce } from '../track.js';
 
 // --- option sets ---------------------------------------------------------
 
@@ -76,7 +77,7 @@ export function FunnelScreen() {
   const [a, setA] = useState(INITIAL);
   const [showSoil, setShowSoil] = useState(false);
   const [result, setResult] = useState(null);
-  const set = (k) => (v) => setA((prev) => ({ ...prev, [k]: v }));
+  const set = (k) => (v) => { trackStartOnce(); setA((prev) => ({ ...prev, [k]: v })); };
 
   const zipRes = resolveZip(a.zip);
   const zipOk = zipRes.ok;
@@ -144,7 +145,22 @@ export function FunnelScreen() {
 
       <div class="funnel-foot">
         <button type="button" class="btn" disabled=${!ready}
-          onClick=${() => { const r = recommend(a); if (r.ok) { setResult(r); window.scrollTo(0, 0); } }}>See my recommendation</button>
+          onClick=${() => {
+            const r = recommend(a);
+            if (r.ok) {
+              // No zip in the event: region only (see track.js).
+              track('picker_complete', {
+                region: r.input.region,
+                project_type: a.projectType,
+                sun: a.sun,
+                traffic: a.traffic,
+                effort: a.water,
+                clover: a.alternatives,
+              });
+              setResult(r);
+              window.scrollTo(0, 0);
+            }
+          }}>See my recommendation</button>
         ${!ready && html`<span class="muted"> Fill in zip, project, sun, traffic, and effort to continue.</span>`}
       </div>
     </div>`;

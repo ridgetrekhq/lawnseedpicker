@@ -4,6 +4,7 @@
 
 import { html, useState } from '../vendor.js';
 import { FTC_DISCLOSURE } from '../data/retailers.js';
+import { track } from '../track.js';
 
 const fmt1 = (n) => (Math.round(n * 10) / 10).toFixed(1);
 const ROLE_LABEL = { base: 'Base', repair: 'Self-repair', clover: 'Clover' };
@@ -77,14 +78,15 @@ function RetailBlends({ retail }) {
       <p class="disclosure-inline">${FTC_DISCLOSURE}</p>
       <div class="retail-grid">
         ${retail.map(
-          (p) => html`
+          (p, i) => html`
             <div class="retail-card" key=${p.id}>
               <div class="retail-name">${p.name}</div>
               <div class="retail-brand muted">${p.brand !== 'generic' ? p.brand : ''}</div>
               <p class="retail-why">${p.why}</p>
               ${p.retailerInfo.url === '#'
                 ? html`<span class="btn ghost" style="opacity:.5;cursor:default">Coming soon</span>`
-                : html`<a class="btn" href=${p.retailerInfo.url} target="_blank" rel="noopener sponsored">
+                : html`<a class="btn" href=${p.retailerInfo.url} target="_blank" rel="noopener sponsored"
+                    onClick=${() => track('picker_retail_click', { product_id: p.id, retailer: p.retailer, card_position: i + 1 })}>
                     Shop at ${p.retailerInfo.name} ${'›'}
                   </a>`}
               <div class="retail-status muted">${p.retailerInfo.name}${p.vendorClaim ? ' · vendor claims' : ''}</div>
