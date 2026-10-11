@@ -55,6 +55,15 @@
 // B00E255LIU, so `retailer` stays 'amazon'. Use the link exactly as supplied:
 // never append a tag or any parameter. Previous value: ASIN B00E255LIU on
 // lsppicker-20 (with SiteStripe params). Guide links to this ASIN are unchanged.
+//
+// 10/11/26 tf_kbg_mix product test. The card moved from Outsidepride Combat
+// Extreme Northern Zone, 10 lb (B01C4R4M5K) to Twin City Seed Co. Blue
+// Resilience, 5 lb (B0DD2KNLPD). Reason: the Amazon report for September 2026
+// showed 19 clicks and 0 orders on B01C4R4M5K. Same 90/10 tall fescue /
+// bluegrass split, same tracking ID (lsppicker-20), so the card's name,
+// traits and `why` are unchanged. To revert, restore the B01C4R4M5K URL.
+// The 7/31/26 note above still describes why this slot is on Amazon; the
+// supplier it names is no longer the one behind this card.
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
@@ -107,18 +116,27 @@ const CATALOG = [
     brand: 'generic',
     seasons: ['cool', 'transition'],
     traits: ['tall_fescue', 'kentucky_bluegrass', 'self_repair', 'traffic'],
-    // Outsidepride Combat Extreme Northern Zone, 10 lb (B01C4R4M5K).
-    // Vendor states 90% turf-type tall fescue / 10% Kentucky bluegrass by
-    // weight, sown at 6-8 lb per 1,000 sq ft — the same rate the picker
-    // outputs for tall fescue. "A little bluegrass" in the `why` below is
-    // literally accurate at 10%.
-    // Other sizes: 5 lb B01C4R4J8A · 25 lb B0B13XHP9Y · 50 lb B0B142ZLHW.
-    // CAVEAT: the listing is positioned for USDA Zones 4-5 while this card also
-    // serves `transition`. Fine agronomically (TF+KBG is standard cool-season),
-    // but do not echo the vendor's zone framing in guide copy. Also note the
-    // vendor's own bullet copy miscalls this a "fine fescue mix" — it is not.
+    // Twin City Seed Co. Blue Resilience, 5 lb (B0DD2KNLPD).
+    // Seller's tech sheet states 90% turf-type tall fescue (four cultivars at
+    // 22.5% each) / 10% Blue Gem Kentucky bluegrass. The seller's own product
+    // page lists five tall fescue cultivars at 18% each and says the mix is
+    // subject to change, so the 90/10 split holds but the cultivars vary: do
+    // not add cultivar-level claims to this card. "A little bluegrass" in the
+    // `why` below is literally accurate at 10%. The 90/10 split was NOT seen
+    // on the Amazon listing itself.
+    // Seller's rates: tech sheet 8-10 lb per 1,000 sq ft new / 6-8 overseeding;
+    // product page and Amazon listing 7-9 new / 5-7 overseeding. The picker
+    // outputs 6-8 for tall fescue.
+    // The seller claims rhizomes that aid self-repair and traffic tolerance
+    // (vendor claim, unverified), which is what `self_repair` and `traffic`
+    // rest on here.
+    // Amazon listing as seen 10/11/26: $37.00, 4.4 stars (22), in stock,
+    // ships from Amazon. Other sizes on the same listing: 1 lb, 3 lb, 25 lb.
+    // There is no 10 lb size.
+    // Previous value: Outsidepride Combat Extreme Northern Zone, 10 lb
+    // (B01C4R4M5K), also 90/10. See the 10/11/26 note at the top of this file.
     retailer: 'amazon',
-    url: 'https://www.amazon.com/dp/B01C4R4M5K?tag=lsppicker-20',
+    url: 'https://www.amazon.com/dp/B0DD2KNLPD?tag=lsppicker-20',
     why: 'Tall fescue toughness plus a little bluegrass to knit in and heal traffic damage.',
   },
   {
