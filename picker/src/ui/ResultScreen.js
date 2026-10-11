@@ -96,6 +96,61 @@ function RetailBlends({ retail }) {
     </section>`;
 }
 
+// Picker -> guide links (plan section 6 row 5, 10/11/26).
+// Up to three guides matched to the visitor's answers. Link text is the guide's
+// own title only: no claims are made here, so nothing needs a source.
+// Fires picker_guide_click { guide, link_position } to measure the plan's
+// ">= 5% of picker sessions click through" check.
+const GUIDES = {
+  clover_overseed: { href: '/overseeding-with-clover', title: 'Overseeding Clover Into an Existing Lawn' },
+  clover_lawn: { href: '/clover-lawn', title: 'Clover Lawns' },
+  dogs: { href: '/dog-urine-spots-lawn', title: 'Dog Urine Spots on the Lawn' },
+  shade: { href: '/shade-grass-seed', title: 'Best Grass Seed for Shade' },
+  overseed: { href: '/overseeding-fall-vs-spring', title: 'Overseeding: Fall vs. Spring' },
+  restart: { href: '/restart-lawn-from-scratch', title: 'How to Restart Your Lawn From Scratch' },
+  patch: { href: '/how-to-reseed-a-lawn', title: 'How to Reseed a Lawn' },
+  watering: { href: '/watering-new-grass-seed', title: 'How to Water New Grass Seed' },
+  when: { href: '/when-to-plant-grass-seed', title: 'When to Plant Grass Seed' },
+  drought: { href: '/drought-tolerant-grass', title: 'Drought-Tolerant Grass' },
+  howmuch: { href: '/how-much-grass-seed-do-i-need', title: 'How Much Grass Seed Do I Need?' },
+};
+
+export function pickGuides(input, win) {
+  const keys = [];
+  const existingLawn = input.project === 'overseed' || input.project === 'patch';
+  if (input.alternatives && input.alternatives !== 'grass') keys.push(existingLawn ? 'clover_overseed' : 'clover_lawn');
+  if (input.traffic === 'dogs') keys.push('dogs');
+  if (input.sun === 'shade') keys.push('shade');
+  if (input.project === 'overseed') keys.push('overseed');
+  else if (input.project === 'restart') keys.push('restart');
+  else if (input.project === 'patch') keys.push('patch');
+  else keys.push('watering');
+  if (win && win.state === 'early') keys.push('when');
+  if (input.water === 'low') keys.push('drought');
+  keys.push('watering', 'howmuch');
+  return [...new Set(keys)].slice(0, 3).map((k) => GUIDES[k]);
+}
+
+function GuideLinks({ input, w }) {
+  const guides = pickGuides(input, w);
+  if (!guides.length) return null;
+  return html`
+    <section class="output" id="guides">
+      <h2>Guides for your plan</h2>
+      <ul style=${{ fontFamily: 'system-ui,sans-serif', fontSize: '.98rem', lineHeight: 1.9, paddingLeft: '1.2em', margin: '.4em 0' }}>
+        ${guides.map(
+          (g, i) => html`
+            <li key=${g.href}>
+              <a href=${g.href} target="_blank" rel="noopener" style=${{ color: 'var(--moss)', fontWeight: 600 }}
+                onClick=${() => track('picker_guide_click', { guide: g.href, link_position: i + 1 })}>
+                ${g.title}
+              </a>
+            </li>`
+        )}
+      </ul>
+    </section>`;
+}
+
 function HowWeChose({ ranked, input }) {
   const [open, setOpen] = useState(false);
   return html`
@@ -153,6 +208,7 @@ export function ResultScreen({ result, onBack }) {
       <${WindowBanner} w=${window} />
       <${DiyRecipe} blend=${blend} />
       <${RetailBlends} retail=${retail} />
+      <${GuideLinks} input=${input} w=${window} />
       <${HowWeChose} ranked=${ranked} input=${input} />
     </div>`;
 }
