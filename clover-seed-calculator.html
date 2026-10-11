@@ -46,6 +46,9 @@
   .calc-out thead th{font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:var(--moss)}
   .calc-out td.big{font-weight:700; color:var(--ink); white-space:nowrap}
   .calc-out .sub{display:block; font-weight:400; color:#5e6b60; font-size:.86rem; white-space:normal}
+  .calc-buy{margin-top:16px; font-size:.97rem}
+  .calc-buy a{color:var(--moss); font-weight:700}
+  .calc-buy span{display:block; color:#5e6b60; font-size:.86rem; margin-top:3px}
   .calc-out .note{color:#5e6b60; font-size:.88rem; margin:12px 0 0; line-height:1.5}
   .ratetable{margin:26px 0; overflow-x:auto}
   .ratetable table{border-collapse:collapse; width:100%; min-width:460px; font-size:.95rem}
@@ -135,9 +138,8 @@
       </fieldset>
 
       <div class="calc-out" id="out" aria-live="polite"></div>
+      <div class="calc-buy"><a href="https://lasso.to/ErLQI50mGb/" target="_blank" rel="noopener sponsored">Outsidepride Miniclover seed on Amazon&nbsp;&rsaquo;</a><span>Its label carries the Outside Pride rate: a seller's number, not an extension one.</span></div>
     </div>
-
-    <p>If you'd rather start from a bag than a bare rate, <a href="https://lasso.to/ErLQI50mGb/" target="_blank" rel="noopener sponsored">Outsidepride Miniclover seed is sold on Amazon</a>. The rate printed on its label is the Outside Pride figure shown above: a seller's number, not an extension one.</p>
 
     <h2>The rates behind the calculator</h2>
     <p>Every figure here is a manufacturer's or seed seller's published rate, not extension-verified. The calculator does no blending or averaging: it multiplies each seller's own rate by your area and shows you both.</p>
@@ -242,7 +244,7 @@
   var HAND = [1.25, 1.5];          // West Coast Seeds: add 25% to 50% by hand
   var DASH = '–';
   var OP_ONE = ' Its sheet gives one rate and does not split raw from pelleted seed.';
-  var NO_MIX = 'No mixing rate on its Miniclover sheet.';
+  var NO_MIX = ' Outside Pride\u2019s Miniclover sheet gives no mixing rate.';
 
   var $ = function (id) { return document.getElementById(id); };
   var val = function (name) { return document.querySelector('input[name="' + name + '"]:checked').value; };
@@ -265,8 +267,13 @@
   function seedCell(lo, hi) {
     return big(pounds(lo, hi) + tag('span', ounces(lo, hi) + ' · ' + grams(lo, hi), 'class="sub"'));
   }
-  function row(seller, cell, basis) { return tag('tr', tag('th', seller, 'scope="row"') + cell + tag('td', basis)); }
-  function head(a, b) { return tag('tr', tag('th', 'Seller') + tag('th', a) + tag('th', 'Based on')); }
+  // Rows are labelled by how heavy the rate is, with the seller named underneath as
+  // the source of the number. "Light" and "Heavy" are used only when the two sellers'
+  // figures do not overlap for the chosen job; otherwise each row is named for its seller.
+  function row(label, source, cell, basis) {
+    return tag('tr', tag('th', label + (source ? tag('span', source, 'class="sub"') : ''), 'scope="row"') + cell + tag('td', basis));
+  }
+  function head(a, b) { return tag('tr', tag('th', 'Rate') + tag('th', a) + tag('th', 'Based on')); }
   function opBasis(job) {
     return (job === 'pure' ? '1' + DASH + '2' : '1/2' + DASH + '1') + ' lb per 1,000 sq ft for Miniclover.' + (job === 'pure' ? OP_ONE : '');
   }
@@ -288,38 +295,41 @@
     var rows = '', hd, title, note = '', ok;
     var w = job === 'pure' ? RATES.pure.wcs[form] : job === 'overseed' ? RATES.overseed.wcs : null;
     var o = job === 'mix' ? null : RATES[job].op;
+    // Light/heavy only when West Coast's top figure sits below Outside Pride's bottom one.
+    var L = ['West Coast Seeds rate', '', 'Outside Pride rate', '', ' For this job the two sellers\u2019 figures overlap.'];
+    if (w && o && w[1] * k[1] < o[0] * G_PER_LB) L = ['Light rate', 'West Coast Seeds', 'Heavy rate', 'Outside Pride', ''];
 
     if (mode === 'need' && job === 'mix') {
       ok = grass > 0;
       title = 'Clover seed to buy';
       hd = head('Seed needed');
       var g = grass * G_PER_LB * MIX_SHARE;
-      rows = row('West Coast Seeds', seedCell(g * k[0], g * k[1]), '5% of the weight of your grass seed.' + handNote) +
-             row('Outside Pride', big('—'), NO_MIX);
+      rows = row('West Coast Seeds rate', '', seedCell(g * k[0], g * k[1]), '5% of the weight of your grass seed.' + handNote);
+      note = NO_MIX;
     } else if (mode === 'need') {
       ok = area > 0;
       title = 'Clover seed to buy';
       hd = head('Seed needed');
       var t = area / 1000;
-      rows = row('West Coast Seeds', seedCell(w[0] * t * k[0], w[1] * t * k[1]), wcsBasis(job, form, w) + handNote) +
-             row('Outside Pride', seedCell(o[0] * t * G_PER_LB, o[1] * t * G_PER_LB), opBasis(job));
-      note = opHandNote;
+      rows = row(L[0], L[1], seedCell(w[0] * t * k[0], w[1] * t * k[1]), wcsBasis(job, form, w) + handNote) +
+             row(L[2], L[3], seedCell(o[0] * t * G_PER_LB, o[1] * t * G_PER_LB), opBasis(job));
+      note = L[4] + opHandNote;
     } else if (job === 'mix') {
       ok = bag > 0;
       title = 'What a ' + fmt(bag, 2) + ' lb bag pairs with';
       hd = head('Grass seed it pairs with');
       var lo = bag / MIX_SHARE / k[1], hi = bag / MIX_SHARE / k[0];
-      rows = row('West Coast Seeds', big(range(lo, hi, function (x) { return fmt(x, 1); }) + ' lb of grass seed'),
-               'Clover at 5% of the weight of the grass seed.' + handNote) +
-             row('Outside Pride', big('—'), NO_MIX);
+      rows = row('West Coast Seeds rate', '', big(range(lo, hi, function (x) { return fmt(x, 1); }) + ' lb of grass seed'),
+               'Clover at 5% of the weight of the grass seed.' + handNote);
+      note = NO_MIX;
     } else {
       ok = bag > 0;
       title = 'What a ' + fmt(bag, 2) + ' lb bag covers';
       hd = head('Area covered');
       var bg = bag * G_PER_LB;
-      rows = row('West Coast Seeds', big(sqft(bg / (w[1] * k[1]) * 1000, bg / (w[0] * k[0]) * 1000)), wcsBasis(job, form, w) + handNote) +
-             row('Outside Pride', big(sqft(bag / o[1] * 1000, bag / o[0] * 1000)), opBasis(job));
-      note = opHandNote;
+      rows = row(L[0], L[1], big(sqft(bg / (w[1] * k[1]) * 1000, bg / (w[0] * k[0]) * 1000)), wcsBasis(job, form, w) + handNote) +
+             row(L[2], L[3], big(sqft(bag / o[1] * 1000, bag / o[0] * 1000)), opBasis(job));
+      note = L[4] + opHandNote;
     }
 
     if (!ok) {
@@ -327,7 +337,7 @@
       return;
     }
     $('out').innerHTML = tag('h3', title) + tag('table', tag('thead', hd) + tag('tbody', rows)) +
-      tag('div', 'Both rows are seed sellers’ published figures, not extension-verified rates.' + note, 'class="note"');
+      tag('div', 'These are seed sellers’ published figures, not extension-verified rates.' + note, 'class="note"');
   }
 
   var fired = false;
