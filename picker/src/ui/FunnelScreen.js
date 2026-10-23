@@ -50,7 +50,7 @@ const WATER = [
 const ALTERNATIVES = [
   { value: 'grass', label: 'Grass only', hint: 'No clover, thanks' },
   { value: 'mix', label: 'Grass + a little clover', hint: 'Best of both — the popular pick' },
-  { value: 'clover', label: 'Clover-forward / eco-lawn', hint: 'Low input, pollinator-friendly' },
+  { value: 'clover', label: 'Clover-forward / eco-lawn', hint: 'Mostly clover — we\'ll point you to clover-only rates' },
 ];
 
 const SOIL = [

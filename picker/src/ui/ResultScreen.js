@@ -63,10 +63,20 @@ function DiyRecipe({ blend }) {
         spreads to repair its own worn spots <span class="muted">(manufacturer claim, not extension-verified)</span>.
       </p>`}
 
+      ${blend.cloverForward &&
+      html`<p class="rtf-callout">
+        <strong>Want a mostly-clover lawn?</strong> Blends above 10% clover tend to end up mostly
+        clover, so this mix holds clover at 5% <span class="muted">(University of Maryland research)</span>.
+        For a clover-only stand, use the${' '}
+        <a href="/clover-seed-calculator" target="_blank" rel="noopener" style=${{ color: 'var(--moss)', fontWeight: 600 }}
+          onClick=${() => track('picker_guide_click', { guide: '/clover-seed-calculator', link_position: 0 })}>clover seed calculator</a>.
+      </p>`}
+
       ${blend.components.some((c) => c.vendor) &&
       html`<p class="honesty muted">
-        Clover lawn rates are manufacturer-sourced (no university extension rate exists for clover in
-        lawns) — that one row isn't extension-verified. Everything else is.
+        The 5% clover share follows University of Maryland research (3–5% microclover by weight with
+        tall fescue). The clover seeding rate behind that row is manufacturer-sourced, so that one row
+        isn't extension-verified. Everything else is.
       </p>`}
     </section>`;
 }
