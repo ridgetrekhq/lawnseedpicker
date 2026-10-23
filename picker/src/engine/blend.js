@@ -22,7 +22,11 @@ function newRateMid(speciesId, fallback) {
 const PROJECT_FACTOR = { new: 1.0, restart: 1.0, patch: 1.0, overseed: 0.5 };
 
 // Clover share of the blend by weight, per the alternatives toggle.
-const CLOVER_SHARE = { grass: 0, mix: 5, clover: 25 };
+// University of Maryland TT-121 (2015): 3-5% microclover by weight with tall
+// fescue; above 10% the stand may become mostly microclover. So the clover-
+// forward choice gets the same 5% blend (no 25% blend, Jon 10/20/26) and the
+// result screen points it to /clover-seed-calculator for pure-stand rates.
+const CLOVER_SHARE = { grass: 0, mix: 5, clover: 5 };
 
 /**
  * Build the recommended blend.
@@ -104,7 +108,14 @@ export function buildBlend(input, ranked) {
     if (c) rtf = { name: 'Turf Saver RTF (Rhizomatous Tall Fescue, Barenbrug)', source: c.source_ids?.[0] || 'vendor' };
   }
 
-  return { components, totalRatePer1000, projectFactor: factor, rtf, season: seasonOf(base.id) };
+  return {
+    components,
+    totalRatePer1000,
+    projectFactor: factor,
+    rtf,
+    season: seasonOf(base.id),
+    cloverForward: alternatives === "clover",
+  };
 }
 
 export function seasonOf(speciesId) {
