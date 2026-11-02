@@ -30,6 +30,7 @@ LawnSeedPicker answers the question "what grass seed should I plant?" with one t
 - [Dormant seeding: does it really work?](https://lawnseedpicker.com/dormant-seeding): Minnesota and Nebraska extension on whether dormant seeding works, why soil temperature (not the calendar) decides when, and where the sources disagree on snow and site prep
 - [Clover seed calculator](https://lawnseedpicker.com/clover-seed-calculator): How much clover or microclover seed to buy for a given lawn size, shown as each seed seller's own published rate
 - [Clover to grass seed ratio](https://lawnseedpicker.com/clover-to-grass-seed-ratio): University of Maryland research gives 3–5% microclover by weight for a tall fescue mix, how much to add per 1,000 sq ft, and why 10% is the ceiling
+- [Overseeding in spring: what extension research says](https://lawnseedpicker.com/overseeding-in-spring): Extension sources rank late summer to early fall ahead of spring for overseeding, and what to know about seed rates and crabgrass preventer if you still seed in spring
 - [All guides](https://lawnseedpicker.com/guides): Full guide index
 
 ## About
