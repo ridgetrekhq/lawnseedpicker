@@ -64,6 +64,14 @@
 // traits and `why` are unchanged. To revert, restore the B01C4R4M5K URL.
 // The 7/31/26 note above still describes why this slot is on Amazon; the
 // supplier it names is no longer the one behind this card.
+//
+// 11/7/26 microclover card back to Amazon. eco_microclover_mix returns from the
+// Lasso link (https://lasso.to/ErLQI50mGb/) to ASIN B00E255LIU on lsppicker-20.
+// Reason: Amazon pays on the whole cart, and in Aug 15-Oct 15 2026 18 of 23
+// ordered items were unlinked cart items; Lasso pays only on Outsidepride
+// items and logged 0 commissions on 22 clicks (Oct 7-Nov 5). Clicks and
+// orders from this card are back in the Amazon Associates report. The
+// 10/8/26 note above is superseded.
 
 export const RETAILERS = {
   placeholder: { name: 'retailer (link pending)', url: '#', affiliate: false },
@@ -161,7 +169,7 @@ const CATALOG = [
     seasons: ['cool', 'transition'],
     traits: ['clover', 'low_input'],
     retailer: 'amazon',
-    url: 'https://lasso.to/ErLQI50mGb/',
+    url: 'https://www.amazon.com/dp/B00E255LIU?tag=lsppicker-20',
     vendorClaim: true,
     why: 'Adds nitrogen-fixing microclover for a lower-input, greener-longer lawn.',
   },
