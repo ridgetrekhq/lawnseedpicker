@@ -31,6 +31,7 @@ LawnSeedPicker answers the question "what grass seed should I plant?" with one t
 - [Clover seed calculator](https://lawnseedpicker.com/clover-seed-calculator): How much clover or microclover seed to buy for a given lawn size, shown as each seed seller's own published rate
 - [Clover to grass seed ratio](https://lawnseedpicker.com/clover-to-grass-seed-ratio): University of Maryland research gives 3–5% microclover by weight for a tall fescue mix, how much to add per 1,000 sq ft, and why 10% is the ceiling
 - [Overseeding in spring: what extension research says](https://lawnseedpicker.com/overseeding-in-spring): Extension sources rank late summer to early fall ahead of spring for overseeding, and what to know about seed rates and crabgrass preventer if you still seed in spring
+- [When to plant clover](https://lawnseedpicker.com/when-to-plant-clover): A ZIP-code checker that shows the extension clover sowing window for your area, whether it's too late today, and what to do instead; areas with no lawn-specific source are told so
 - [All guides](https://lawnseedpicker.com/guides): Full guide index
 
 ## About
