@@ -21,7 +21,7 @@ function WindowBanner({ w }) {
     </div>`;
 }
 
-function DiyRecipe({ blend }) {
+function DiyRecipe({ blend, shade }) {
   const [area, setArea] = useState(5000);
   const per1000 = blend.totalRatePer1000;
   const totalLbs = (per1000 * (area || 0)) / 1000;
@@ -61,6 +61,13 @@ function DiyRecipe({ blend }) {
       html`<p class="rtf-callout">
         <strong>Worth a look for kids and pets:</strong> ${blend.rtf.name} — a tall fescue that
         spreads to repair its own worn spots <span class="muted">(manufacturer claim, not extension-verified)</span>.
+      </p>`}
+
+      ${shade && blend.components.some((c) => c.role === 'clover') &&
+      html`<p class="rtf-callout">
+        <strong>Clover and shade:</strong> clover needs full sun, and microclover has very poor shade
+        tolerance, so don't expect the clover in this mix to persist in the shadiest spots${' '}
+        <span class="muted">(University of Maryland Extension)</span>. The grass carries the lawn there.
       </p>`}
 
       ${blend.cloverForward &&
@@ -216,7 +223,7 @@ export function ResultScreen({ result, onBack }) {
       <p style=${{ margin: '.35rem 0 0' }}><a href="#buy" style=${{ color: 'var(--moss)', fontWeight: 600 }}>${'↓'} Skip to where to buy this blend</a></p>
 
       <${WindowBanner} w=${window} />
-      <${DiyRecipe} blend=${blend} />
+      <${DiyRecipe} blend=${blend} shade=${input.sun === 'shade'} />
       <${RetailBlends} retail=${retail} />
       <${GuideLinks} input=${input} w=${window} />
       <${HowWeChose} ranked=${ranked} input=${input} />
