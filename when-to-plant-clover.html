@@ -53,6 +53,10 @@
   .calc-out .note{color:#5e6b60; font-size:.88rem}
   .calc-buy{margin-top:14px; font-size:.97rem}
   .calc-buy a{color:var(--moss); font-weight:700}
+  .calc-buy p{margin:0 0 .4em; font-weight:700; color:var(--ink)}
+  .calc-buy ul{margin:0; padding-left:1.2em}
+  .calc-buy li{margin:.3em 0}
+  .calc-buy a.btn{color:#fff}
   .wintable{margin:26px 0; overflow-x:auto}
   .wintable table{border-collapse:collapse; width:100%; min-width:560px; font-size:.93rem}
   .wintable caption{text-align:left; font-size:.9rem; color:#5e6b60; padding-bottom:10px; line-height:1.5}
@@ -82,7 +86,7 @@
   <article class="wrap">
     <p class="article-meta">Clover planting-window checker</p>
     <h1>When to Plant Clover in Your Lawn</h1>
-    <p class="muted">By Jon P. — founder of LawnSeedPicker and home-yard DIY enthusiast · Published November 8, 2026</p>
+    <p class="muted">By Jon P. — founder of LawnSeedPicker and home-yard DIY enthusiast · Published November 8, 2026 · Updated November 20, 2026</p>
 
     <div class="disclosure">
       <strong>Heads up:</strong> Some links on this page are affiliate links — if you buy through them we may earn a small commission at no extra cost to you. It doesn't change what we recommend. <a href="/disclosure">Full disclosure</a>.
@@ -239,12 +243,41 @@
 
 <script type="module">
   import { resolveZip } from '/picker/src/engine/zip.js';
-  import { cloverWindow } from '/clover-windows.js';
+  import { cloverWindow, panelFor, PRODUCTS, amazonUrl } from '/clover-windows.js';
 
   var form = document.getElementById('zipform');
   var input = document.getElementById('zip');
   var out = document.getElementById('out');
   var fired = false;
+  var last = null;
+
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params);
+    } catch (err) { /* analytics must never break the tool */ }
+  }
+
+  function renderPanel(r) {
+    var p = panelFor(r);
+    var h = '<div class="calc-buy"><p>' + p.lead + '</p>';
+    if (p.kind === 'buy') {
+      h += '<ul>';
+      p.items.forEach(function (it) {
+        var prod = PRODUCTS[it.id];
+        h += '<li>' + it.note + '<a href="' + amazonUrl(prod.asin) + '" target="_blank" rel="noopener sponsored" data-retail="' + it.id + '">' + prod.text + '&nbsp;&rsaquo;</a></li>';
+      });
+      h += '</ul>';
+    } else if (p.kind === 'route') {
+      h += '<ul>';
+      p.guides.forEach(function (g) {
+        h += '<li><a href="/' + g.slug + '" data-guide="' + g.slug + '">' + g.text + '&nbsp;&rsaquo;</a></li>';
+      });
+      h += '</ul>';
+    } else {
+      h += '<p><a class="btn" href="' + p.picker.href + '" data-picker="1">' + p.picker.text + '&nbsp;&rarr;</a></p>';
+    }
+    return h + '</div>';
+  }
 
   function render(r) {
     var h = '';
@@ -256,10 +289,9 @@
     (r.secondary || []).forEach(function (s) {
       h += '<div class="sec"><span class="lbl">' + s.label + '</span>' + s.text + '</div>';
     });
-    if (r.showBuy) {
-      h += '<div class="calc-buy"><a href="https://www.amazon.com/dp/B00E255LIU?tag=lawnseedpicke-20" target="_blank" rel="noopener sponsored">Ready to sow? Outsidepride Miniclover seed on Amazon&nbsp;&rsaquo;</a></div>';
-    }
+    h += renderPanel(r);
     out.innerHTML = h;
+    last = r;
   }
 
   form.addEventListener('submit', function (e) {
@@ -278,11 +310,22 @@
     render(r);
     if (!fired) {
       fired = true;
-      try {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'clover_window_check', { area_group: r.group, verdict: r.verdict });
-        }
-      } catch (err) { /* analytics must never break the tool */ }
+      track('clover_window_check', { area_group: r.group, verdict: r.verdict });
+    }
+  });
+
+  // Result-panel clicks. The panel is rebuilt on every check, so listen on the
+  // container. The ZIP is never sent; only the coarse area group and verdict.
+  out.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (!a || !last) return;
+    var base = { area_group: last.group, verdict: last.verdict };
+    if (a.dataset.retail) {
+      track('checker_retail_click', Object.assign({ product_id: a.dataset.retail }, base));
+    } else if (a.dataset.guide) {
+      track('checker_guide_click', Object.assign({ guide: a.dataset.guide }, base));
+    } else if (a.dataset.picker) {
+      track('checker_to_picker', base);
     }
   });
 </script>
@@ -298,7 +341,7 @@
       "author": { "@type": "Person", "name": "Jon P." },
       "publisher": { "@type": "Organization", "name": "LawnSeedPicker" },
       "datePublished": "2026-11-08",
-      "dateModified": "2026-11-08",
+      "dateModified": "2026-11-20",
       "image": "https://lawnseedpicker.com/pins/when-to-plant-clover.png",
       "mainEntityOfPage": "https://lawnseedpicker.com/when-to-plant-clover"
     },
