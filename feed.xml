@@ -5,8 +5,17 @@
     <link>https://lawnseedpicker.com/guides.html</link>
     <description>Grass-seed and lawn-care guides, backed by USDA and university extension research.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Nov 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://lawnseedpicker.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Creeping Thyme Lawn: What the Research Says</title>
+      <link>https://lawnseedpicker.com/creeping-thyme-lawn.html</link>
+      <guid isPermaLink="true">https://lawnseedpicker.com/creeping-thyme-lawn.html</guid>
+      <pubDate>Sun, 22 Nov 2026 12:00:00 +0000</pubDate>
+      <description>Can creeping thyme replace your lawn? Extension sources say small areas, not whole yards, and the University of Minnesota no longer recommends it for bee lawn mixes. Foot traffic, winter, seed vs plugs. #creepingthyme #lawnalternative</description>
+      <enclosure url="https://lawnseedpicker.com/pins/creeping-thyme-lawn.png" type="image/png" length="60013"/>
+      <media:content url="https://lawnseedpicker.com/pins/creeping-thyme-lawn.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>When to Plant Clover: Check Your Area's Window</title>
       <link>https://lawnseedpicker.com/when-to-plant-clover.html</link>
