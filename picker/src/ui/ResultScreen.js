@@ -21,7 +21,7 @@ function WindowBanner({ w }) {
     </div>`;
 }
 
-function DiyRecipe({ blend, shade }) {
+function DiyRecipe({ blend, shade, rtfFits }) {
   const [area, setArea] = useState(5000);
   const per1000 = blend.totalRatePer1000;
   const totalLbs = (per1000 * (area || 0)) / 1000;
@@ -57,7 +57,7 @@ function DiyRecipe({ blend, shade }) {
         <span class="area-total">→ buy about <strong>${fmt1(totalLbs)} lb</strong> total</span>
       </div>
 
-      ${blend.rtf &&
+      ${blend.rtf && rtfFits &&
       html`<p class="rtf-callout">
         <strong>Worth a look for kids and pets:</strong> ${blend.rtf.name} — a tall fescue that
         spreads to repair its own worn spots <span class="muted">(manufacturer claim, not extension-verified)</span>.
@@ -223,7 +223,8 @@ export function ResultScreen({ result, onBack }) {
       <p style=${{ margin: '.35rem 0 0' }}><a href="#buy" style=${{ color: 'var(--moss)', fontWeight: 600 }}>${'↓'} Skip to where to buy this blend</a></p>
 
       <${WindowBanner} w=${window} />
-      <${DiyRecipe} blend=${blend} shade=${input.sun === 'shade'} />
+      <${DiyRecipe} blend=${blend} shade=${input.sun === 'shade'}
+        rtfFits=${input.traffic === 'kids_pets' || input.traffic === 'dogs'} />
       <${RetailBlends} retail=${retail} />
       <${GuideLinks} input=${input} w=${window} />
       <${HowWeChose} ranked=${ranked} input=${input} />
