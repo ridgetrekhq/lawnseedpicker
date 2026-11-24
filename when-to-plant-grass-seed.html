@@ -17,12 +17,12 @@
 <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96">
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>When to Plant Grass Seed: Best Time by Grass Type &amp; Region — LawnSeedPicker</title>
-<meta name="description" content="The best time to plant grass seed depends on your grass type: cool-season grasses in late summer to early fall, warm-season grasses in late spring. Here's how to time it right.">
+<title>When to Plant Grass Seed by Region: Check Your Area's Window — LawnSeedPicker</title>
+<meta name="description" content="Enter your ZIP to see when your state's extension service says to seed a lawn, whether it's too late today, and what to do instead.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="LawnSeedPicker">
-<meta property="og:title" content="When to Plant Grass Seed: Best Time by Grass Type &amp; Region">
-<meta property="og:description" content="The best time to plant grass seed depends on your grass type: cool-season grasses in late summer to early fall, warm-season grasses in late spring.">
+<meta property="og:title" content="When to Plant Grass Seed by Region: Check Your Area's Window">
+<meta property="og:description" content="Enter your ZIP to see when your state's extension service says to seed a lawn, whether it's too late today, and what to do instead.">
 <meta property="og:url" content="https://lawnseedpicker.com/when-to-plant-grass-seed">
 <meta property="og:image" content="https://lawnseedpicker.com/pins/when-to-plant-grass-seed.png">
 <meta property="og:image:width" content="1000">
@@ -37,6 +37,39 @@
   .fromyard h3{margin:0 0 .4em; color:var(--moss)}
   .fromyard p{margin:.5em 0; color:#4a574c}
   .fromyard p:last-child{margin-bottom:0}
+  .calc{background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0;
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  .calc label{display:block; font-weight:700; color:var(--moss); margin-bottom:8px; font-size:1rem}
+  .calc .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+  .calc .num{font-size:1.1rem; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; width:140px; font-family:inherit}
+  .calc .num:focus{outline:none; border-color:var(--sprout); box-shadow:0 0 0 2px var(--sprout) inset}
+  .calc button{font:inherit; font-weight:700; padding:10px 16px; border-radius:8px; border:0; background:var(--moss); color:#fff; cursor:pointer}
+  .calc button:focus-visible{outline:3px solid var(--sun); outline-offset:2px}
+  .calc .hint{color:#5e6b60; font-size:.88rem; margin:8px 0 0}
+  .calc-out{border-top:1px solid var(--line); margin-top:16px; padding-top:16px}
+  .calc-out:empty{display:none}
+  .calc-out h3{margin:0 0 .4em; color:var(--moss); font-size:1.1rem}
+  .calc-out .area{color:#5e6b60; font-size:.9rem; margin:0 0 10px}
+  .calc-out .verdict{font-size:1.05rem; font-weight:700; color:var(--ink); background:var(--sand); border-left:4px solid var(--sun); padding:10px 14px; border-radius:0 8px 8px 0; margin:12px 0}
+  .calc-out p{margin:.5em 0; font-size:.97rem; line-height:1.55}
+  .calc-out .lbl{display:inline-block; font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--moss); border:1px solid var(--line); border-radius:4px; padding:1px 6px; margin-right:6px}
+  .calc-out .sec{border-top:1px dashed var(--line); margin-top:12px; padding-top:10px; font-size:.93rem}
+  .calc-out .note{color:#5e6b60; font-size:.88rem}
+  .calc-buy{margin-top:14px; font-size:.97rem}
+  .calc-buy a{color:var(--moss); font-weight:700}
+  .calc-buy p{margin:0 0 .4em; font-weight:700; color:var(--ink)}
+  .calc-buy ul{margin:0; padding-left:1.2em}
+  .calc-buy li{margin:.3em 0}
+  .calc-buy a.btn{color:#fff}
+  .wintable{margin:26px 0; overflow-x:auto}
+  .wintable table{border-collapse:collapse; width:100%; min-width:560px; font-size:.93rem}
+  .wintable caption{text-align:left; font-size:.9rem; color:#5e6b60; padding-bottom:10px; line-height:1.5}
+  .wintable th, .wintable td{border-bottom:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top}
+  .wintable thead th{border-bottom:2px solid var(--line); color:var(--moss); font-size:.8rem;
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif; text-transform:uppercase; letter-spacing:.06em}
+  .calc-zones{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0}
+  .calc-zones button{background:#fff; color:var(--moss); border:1.5px solid var(--sprout)}
+  .calc-zones button[aria-pressed="true"]{background:var(--moss); color:#fff}
   .sources{border-top:1px solid var(--line); margin-top:40px; padding-top:16px; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; font-size:.85rem; color:#6b7a6e}
   .sources a{color:#6b7a6e}
   .sources li{margin:.3em 0}
@@ -60,13 +93,98 @@
   <article class="wrap">
     <p class="article-meta">Seasonal guide</p>
     <h1>When to Plant Grass Seed: The Best Time by Grass Type and Region</h1>
-    <p class="muted">By Jon P. — founder of LawnSeedPicker and home-yard DIY enthusiast · Published June 22, 2026 · Updated June 22, 2026</p>
+    <p class="muted">By Jon P. — founder of LawnSeedPicker and home-yard DIY enthusiast · Published June 22, 2026 · Updated November 23, 2026</p>
 
     <p class="lede"><strong>The best time to plant grass seed depends on your grass type.</strong> Cool-season grasses (fescue, ryegrass, Kentucky bluegrass) establish best in late summer to early fall — roughly mid-August through early October. Warm-season grasses (Bermuda, zoysia, bahia) do best planted in late spring to early summer, once soil stays consistently warm and frost danger has passed.</p>
 
     <div class="disclosure">
       <strong>Heads up:</strong> Some links on this page are affiliate links — if you buy through them we may earn a small commission at no extra cost to you. It doesn't change what we recommend. <a href="/disclosure">Full disclosure</a>.
     </div>
+
+    <p><strong>Check your area's window:</strong> enter your ZIP code to see when your state's extension service says to seed a lawn, whether it's too late today, and what to do instead. Each answer quotes the one source written for your area.</p>
+
+    <div class="calc" id="checker">
+      <form id="zipform" novalidate>
+        <label for="zip">Your ZIP code</label>
+        <div class="row">
+          <input class="num" id="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="e.g. 02052">
+          <button type="submit">Check my window</button>
+        </div>
+        <p class="hint">Your ZIP stays in your browser. It isn't sent anywhere.</p>
+      </form>
+      <div class="calc-out" id="out" aria-live="polite"></div>
+      <noscript><p class="hint">The checker needs JavaScript. The full table of windows is below.</p></noscript>
+    </div>
+
+    <h2>How the window checker works</h2>
+    <p>Your ZIP code is matched to a state, using the same lookup as our <a href="/picker/">grass seed calculator</a>. Each state then gets the one extension source written for it, quoted as written. Where that source gives dates, the checker compares them with today's date; where a source splits a state into regions, you pick yours. Where we haven't found an extension source that publishes lawn seeding dates for your area, the checker says so instead of borrowing a neighbor's dates.</p>
+    <p>The checker covers timing only. For how much seed to buy, use the <a href="/picker/">calculator</a>; for clover, use the <a href="/when-to-plant-clover">clover planting-window checker</a>.</p>
+
+    <h2>Every window in the checker</h2>
+    <div class="wintable">
+      <table>
+        <caption>Each row is quoted from the extension source named. All are written for home lawns.</caption>
+        <thead>
+          <tr><th>Area</th><th>What the source says</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Massachusetts</td>
+            <td>Renovating in late summer, August 15 to September 15, "generally yields the best results"; spring seeding only if absolutely necessary.<!-- src: UMass_Lawn_Renovation_Overseeding.pdf p.1 "generally yields the best results" --></td>
+            <td>UMass Extension</td>
+          </tr>
+          <tr>
+            <td>Connecticut</td>
+            <td>"August 15 through mid-September is the best time to establish or renovate a lawn in Connecticut." "The latest date for seeding has always been before October 4."<!-- src: UConn_Lawn_Renovation_Repair.pdf p.1 "August 15 through mid-September is the best time to establish or renovate a lawn in Connecticut" --><!-- src: UConn_Lawn_Renovation_Repair.pdf p.1 "The latest date for seeding has always been before October 4" --></td>
+            <td>UConn Extension</td>
+          </tr>
+          <tr>
+            <td>Maine</td>
+            <td>"The best time to seed a lawn in Maine is from August 15 to September 15."<!-- src: UMaine_2367_Establishing_Home_Lawn.pdf p.1 "The best time to seed a lawn in Maine is from August 15 to September 15" --> Renovating an existing lawn can also work in spring, in May.<!-- src: UMaine_2367_Establishing_Home_Lawn.pdf p.2 "most successful when done in spring (May) or during late summer" --></td>
+            <td>University of Maine Cooperative Extension</td>
+          </tr>
+          <tr>
+            <td>Iowa</td>
+            <td>Best "from mid-August to mid-September"; dormant seeding "late November through early December"; spring seeding "(early April to mid-May) is possible when irrigation is available"; "Seeding from late May to mid-August is extremely difficult and usually unsuccessful."<!-- src: IowaState_Seeding_New_Lawn.pdf p.1 "from mid-August to mid-September" --><!-- src: IowaState_Seeding_New_Lawn.pdf p.1 "late November through early December" --><!-- src: IowaState_Seeding_New_Lawn.pdf p.1 "(early April to mid-May) is possible when irrigation is available" --><!-- src: IowaState_Seeding_New_Lawn.pdf p.1 "Seeding from late May to mid-August is extremely difficult and usually unsuccessful" --></td>
+            <td>Iowa State University Extension and Outreach</td>
+          </tr>
+          <tr>
+            <td>Minnesota</td>
+            <td>"The best time to seed in Minnesota is late summer (mid-August to mid-September)."<!-- src: UMN_Seeding_Sodding_Home_Lawns.pdf p.1 "The best time to seed in Minnesota is late summer (mid-August to mid-September)" --> A separate UMN Extension page gives dormant seeding from early November to the middle of March, while soil is below 40&deg;F.<!-- src: UMN_Extension_Dormant_Seeding.pdf p.1 --></td>
+            <td>University of Minnesota Extension</td>
+          </tr>
+          <tr>
+            <td>Indiana and Illinois</td>
+            <td>"Between August 15 and September 15 is optimum seeding time in the northern half of Indiana and Illinois, and September 1 to September 30 is optimum in the southern half." Dormant seeding "as early as Thanksgiving and as late as March"; spring seeding is difficult and often unsuccessful.<!-- src: Purdue_AY-3-W_Seeding.pdf p.1 "Between August 15 and September 15 is optimum seeding time in the northern half of Indiana and Illinois" --><!-- src: Purdue_AY-3-W_Seeding.pdf p.1 "September 1 to September 30 is optimum in the southern half" --><!-- src: Purdue_AY-3-W_Seeding.pdf p.1 "as early as Thanksgiving and as late as March" --></td>
+            <td>Purdue Extension</td>
+          </tr>
+          <tr>
+            <td>Kansas</td>
+            <td>Cool-season grasses are "best seeded in early September", and spring seeding "often can be successful during March and early April".<!-- src: KState_MF1126_Lawn_Establishment.pdf p.1 "best seeded in early September" --><!-- src: KState_MF1126_Lawn_Establishment.pdf p.2 "often can be successful during March and early April" --> "Mid-May through July is the ideal time for planting warm-season buffalograss, bermudagrass and zoysiagrass"; later plantings "may not completely establish".<!-- src: KState_MF1126_Lawn_Establishment.pdf p.2 "Mid-May through July is the ideal time for planting warm-season buffalograss, bermudagrass and zoysiagrass" --></td>
+            <td>Kansas State University Research and Extension (January 2002)<!-- src: KState_MF1126_Lawn_Establishment.pdf p.4 --></td>
+          </tr>
+          <tr>
+            <td>Georgia</td>
+            <td>Tall fescue "September to October, or late February through March" in the Mountain and Piedmont regions; bermudagrass and zoysiagrass "May to June" statewide, as are bahiagrass and centipedegrass from the Piedmont to the coast.<!-- src: UGA_B1533-2_Establishment.pdf p.6 "September to October, or late February through March" --> Warm-season seeding "no later than first- to mid-August".<!-- src: UGA_B1533-2_Establishment.pdf p.8 "seeding no later than first- to" --></td>
+            <td>University of Georgia Cooperative Extension</td>
+          </tr>
+          <tr>
+            <td>North Carolina (tall fescue)</td>
+            <td>Western region: "Overseed thin, bare areas as weather cools (August 15 to September 1)." Piedmont and coastal plain: the same, "(September 1 to October 1)".<!-- src: NCState_Tall_Fescue_Calendar_Wayback_2026-08-08.pdf p.2 "Overseed thin, bare areas as weather cools (August 15 to September 1)" --><!-- src: NCState_Tall_Fescue_Calendar_Wayback_2026-08-08.pdf p.2 "Overseed thin, bare areas as weather cools (September 1 to October 1)" --></td>
+            <td>NC State Extension, <em>Tall Fescue Lawn Maintenance Calendar</em></td>
+          </tr>
+          <tr>
+            <td>Everywhere else</td>
+            <td>No lawn-specific extension window saved yet. The general timing below still applies.</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>When should you overseed a lawn?</h2>
+    <p>The same windows apply to thickening an existing lawn. UMass Extension says renovating in late summer, August 15 to September 15, "generally yields the best results",<!-- src: UMass_Lawn_Renovation_Overseeding.pdf p.1 "generally yields the best results" --> and NC State's tall fescue calendar says to "Overseed thin, bare areas as weather cools" (September 1 to October 1 in the Piedmont and coastal plain).<!-- src: NCState_Tall_Fescue_Calendar_Wayback_2026-08-08.pdf p.2 "Overseed thin, bare areas as weather cools (September 1 to October 1)" --> If you've missed the window, see <a href="/dormant-seeding">dormant seeding</a> or <a href="/overseeding-in-spring">overseeding in spring</a>; for fall against spring in detail, see <a href="/overseeding-fall-vs-spring">overseeding in fall vs. spring</a>.</p>
+
 
     <h2>When is the best time to plant grass seed?</h2>
     <p>There is no single calendar date that works for every lawn — the right window is set by the kind of grass you're growing, because cool-season and warm-season grasses germinate and establish under opposite conditions. The two questions to answer first are: <em>what type of grass are you planting,</em> and <em>where do you live?</em></p>
@@ -123,6 +241,7 @@
         <li>Penn State Extension — <em>Lawn Establishment</em>.</li>
         <li>USDA NRCS Plant Guides / fact sheets for warm-season species (Bermuda grass, zoysia, bahia grass, buffalo grass).</li>
         <li>Clemson Cooperative Extension HGIC — <em>Selecting a Lawn Grass</em>.</li>
+        <li>Window checker: UMass Extension — <em>Lawn Renovation &amp; Overseeding</em>; UConn Home Garden Education Office — <em>Lawn Renovation and Repair</em>; University of Maine Cooperative Extension — <em>Establishing a Home Lawn in Maine</em>; Iowa State University Extension and Outreach — <em>Seeding a New Lawn</em>; University of Minnesota Extension — <em>Seeding and sodding home lawns</em> and <em>Dormant seeding to establish or improve your lawn</em>; Purdue University Turf Science — <em>Establishing Turfgrass Areas From Seed</em>; Kansas State University Research and Extension — <em>Planting a Home Lawn</em>; University of Georgia Cooperative Extension — <em>Lawns in Georgia: Establishment</em>; NC State Extension — <em>Tall Fescue Lawn Maintenance Calendar</em> (archived copy).</li>
       </ul>
     </div>
 
@@ -141,6 +260,127 @@
   </div>
 </footer>
 
+<script type="module">
+  import { resolveZip } from '/picker/src/engine/zip.js';
+  import { grassWindow, panelFor, PRODUCTS, amazonUrl } from '/grass-windows.js';
+
+  var form = document.getElementById('zipform');
+  var input = document.getElementById('zip');
+  var out = document.getElementById('out');
+  var fired = false;
+  var last = null; // { group, verdict }
+
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params);
+    } catch (err) { /* analytics must never break the tool */ }
+  }
+
+  function fireCheck(group, verdict) {
+    last = { area_group: group, verdict: verdict };
+    if (!fired) {
+      fired = true;
+      track('grass_window_check', last);
+    }
+  }
+
+  function isCool(b) { return b.label.indexOf('Warm') !== 0; }
+
+  function renderPanel(blocks) {
+    // Prefer a block where seeding is possible now; otherwise the first block.
+    var pick = blocks.filter(function (b) { return b.verdict === 'open' || b.verdict === 'late_ok'; })[0] || blocks[0];
+    var p = panelFor(pick ? pick.verdict : 'no_window', pick ? isCool(pick) : false);
+    var h = '<div class="calc-buy"><p>' + p.lead + '</p>';
+    if (p.kind === 'buy') {
+      h += '<ul>';
+      p.items.forEach(function (it) {
+        var prod = PRODUCTS[it.id];
+        h += '<li>' + it.note + '<a href="' + amazonUrl(prod.asin) + '" target="_blank" rel="noopener sponsored" data-retail="' + it.id + '">' + prod.text + '&nbsp;&rsaquo;</a></li>';
+      });
+      h += '</ul>';
+    } else if (p.kind === 'route') {
+      h += '<ul>';
+      p.guides.forEach(function (g) {
+        h += '<li><a href="/' + g.slug + '" data-guide="' + g.slug + '">' + g.text + '&nbsp;&rsaquo;</a></li>';
+      });
+      h += '</ul>';
+    } else {
+      h += '<p><a class="btn" href="' + p.picker.href + '" data-picker="1">' + p.picker.text + '&nbsp;&rarr;</a></p>';
+    }
+    return h + '</div>';
+  }
+
+  function renderBlock(b) {
+    var h = '<p><span class="lbl">' + b.label + '</span>' + b.text + '</p>';
+    h += '<div class="verdict">' + b.verdictText + '</div>';
+    if (b.next) h += '<p>' + b.next + '</p>';
+    return h;
+  }
+
+  function header(r) {
+    return '<h3>Your grass seeding window</h3><p class="area">Your area: ' + r.area + '</p>';
+  }
+
+  function render(r) {
+    if (!r.blocks.length) {
+      out.innerHTML = header(r) + '<div class="verdict">' + r.noWindow + '</div>' + renderPanel([]);
+      fireCheck(r.group, 'no_window');
+      return;
+    }
+    if (r.zoned) {
+      var h = header(r) + '<p>Your source splits the state into regions. Which are you in?</p><div class="calc-zones">';
+      r.blocks.forEach(function (b, i) {
+        h += '<button type="button" data-zone="' + i + '" aria-pressed="false">' + b.label + '</button>';
+      });
+      h += '</div><div id="zoneout"></div>';
+      out.innerHTML = h;
+      out.querySelectorAll('[data-zone]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var b = r.blocks[Number(btn.dataset.zone)];
+          out.querySelectorAll('[data-zone]').forEach(function (x) { x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
+          document.getElementById('zoneout').innerHTML = renderBlock(b) + renderPanel([b]);
+          fireCheck(r.group, b.verdict);
+        });
+      });
+      return;
+    }
+    var body = header(r);
+    r.blocks.forEach(function (b, i) {
+      body += i ? '<div class="sec">' + renderBlock(b) + '</div>' : renderBlock(b);
+    });
+    out.innerHTML = body + renderPanel(r.blocks);
+    fireCheck(r.group, r.verdict);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var raw = input.value.replace(/\D/g, '');
+    if (raw.length !== 5) {
+      out.innerHTML = '<p class="note">Enter a five-digit ZIP code.</p>';
+      return;
+    }
+    var z = resolveZip(raw);
+    if (!z.ok) {
+      out.innerHTML = '<p class="note">We don’t recognize that ZIP code. Check it and try again.</p>';
+      return;
+    }
+    render(grassWindow(z.area, new Date()));
+  });
+
+  // Result-panel clicks. Only the coarse area group and verdict are sent, never the ZIP.
+  out.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (!a || !last) return;
+    if (a.dataset.retail) {
+      track('window_retail_click', Object.assign({ product_id: a.dataset.retail }, last));
+    } else if (a.dataset.guide) {
+      track('window_guide_click', Object.assign({ guide: a.dataset.guide }, last));
+    } else if (a.dataset.picker) {
+      track('window_to_picker', last);
+    }
+  });
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -152,8 +392,16 @@
       "author": { "@type": "Person", "name": "Jon P." },
       "publisher": { "@type": "Organization", "name": "LawnSeedPicker" },
       "datePublished": "2026-06-22",
-      "dateModified": "2026-06-22",
+      "dateModified": "2026-11-23",
       "mainEntityOfPage": "https://lawnseedpicker.com/when-to-plant-grass-seed"
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Grass seeding-window checker",
+      "url": "https://lawnseedpicker.com/when-to-plant-grass-seed",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     },
     {
       "@type": "FAQPage",
