@@ -43,6 +43,11 @@
   .calc .num:focus{outline:none; border-color:var(--sprout); box-shadow:0 0 0 2px var(--sprout) inset}
   .calc .unit{margin-left:8px; color:#5e6b60; font-size:.95rem}
   .calc .hint{color:#5e6b60; font-size:.88rem; margin:6px 0 0}
+  .calc #f-cost .hint{margin:0 0 8px}
+  .calc .crow{margin:6px 0}
+  .calc .crow .num{width:110px}
+  .calc .crow label{display:inline-block; min-width:7.5em; font-size:.95rem}
+  .calc-out .cost{background:var(--sand); border-left:4px solid var(--sun); border-radius:0 8px 8px 0; padding:10px 14px; margin:12px 0; font-size:.95rem}
   .calc [hidden]{display:none}
   .calc-out{border-top:1px solid var(--line); margin-top:6px; padding-top:16px}
   .calc-out h3{margin:0 0 .5em; color:var(--moss); font-size:1.1rem}
@@ -85,7 +90,7 @@
   <article class="wrap">
     <p class="article-meta">Calculator</p>
     <h1>Clover Seed Calculator</h1>
-    <p class="muted">By Jon P. — founder of LawnSeedPicker and home-yard DIY enthusiast · Published October 11, 2026 · Updated October 24, 2026</p>
+    <p class="muted">By Jon P. — founder of LawnSeedPicker and home-yard DIY enthusiast · Published October 11, 2026 · Updated November 23, 2026</p>
 
     <div class="disclosure">
       <strong>Heads up:</strong> Some links on this page are affiliate links — if you buy through them we may earn a small commission at no extra cost to you. It doesn't change what we recommend. <a href="/disclosure">Full disclosure</a>.
@@ -133,6 +138,13 @@
           <label><input type="radio" name="form" value="raw" checked> Raw seed</label>
           <label><input type="radio" name="form" value="pelleted"> Pelleted (coated) seed</label>
         </div>
+      </fieldset>
+
+      <fieldset id="f-cost">
+        <legend>Cost (optional)</legend>
+        <div class="hint">Enter the bag size and the price you see at the store or online, and the calculator works out how many bags and what they cost. We don't show seed prices ourselves.</div>
+        <div class="crow"><label for="cbag">Bag size</label> <input class="num" id="cbag" type="number" inputmode="decimal" min="0" step="0.25"><span class="unit">pounds</span></div>
+        <div class="crow"><label for="cprice">Price per bag</label> <span class="unit">$</span><input class="num" id="cprice" type="number" inputmode="decimal" min="0" step="0.01"></div>
       </fieldset>
 
       <fieldset>
@@ -293,12 +305,13 @@
     $('f-grass').hidden = !(mode === 'need' && job === 'mix');
     $('f-bag').hidden = mode !== 'cover';
     $('f-form').hidden = job !== 'pure';
+    $('f-cost').hidden = mode !== 'need';
 
     var area = num('area'), grass = num('grass'), bag = num('bag');
     var k = hand ? HAND : [1, 1];
     var handNote = hand ? ' Includes its 25% to 50% extra for hand spreading.' : '';
     var opHandNote = hand ? ' Outside Pride gives no hand-spreading adjustment, so its figure is unchanged.' : '';
-    var rows = '', hd, title, note = '', ok;
+    var rows = '', hd, title, note = '', ok, need = [];
     var w = job === 'pure' ? RATES.pure.wcs[form] : job === 'overseed' ? RATES.overseed.wcs : null;
     var o = job === 'mix' ? null : RATES[job].op;
     // Light/heavy only when West Coast's top figure sits below Outside Pride's bottom one.
@@ -311,6 +324,7 @@
       hd = head('Seed needed');
       var g = grass * G_PER_LB * MIX_SHARE;
       rows = row('West Coast Seeds rate', '', seedCell(g * k[0], g * k[1]), '5% of the weight of your grass seed.' + handNote);
+      need = [['West Coast Seeds rate', g * k[0], g * k[1]]];
       note = NO_MIX;
     } else if (mode === 'need') {
       ok = area > 0;
@@ -319,6 +333,7 @@
       var t = area / 1000;
       rows = row(L[0], L[1], seedCell(w[0] * t * k[0], w[1] * t * k[1]), wcsBasis(job, form, w) + handNote) +
              row(L[2], L[3], seedCell(o[0] * t * G_PER_LB, o[1] * t * G_PER_LB), opBasis(job));
+      need = [[L[0], w[0] * t * k[0], w[1] * t * k[1]], [L[2], o[0] * t * G_PER_LB, o[1] * t * G_PER_LB]];
       note = L[4] + opHandNote;
     } else if (job === 'mix') {
       ok = bag > 0;
@@ -343,7 +358,24 @@
       return;
     }
     $('out').innerHTML = tag('h3', title) + tag('table', tag('thead', hd) + tag('tbody', rows)) +
+      costLine(need) +
       tag('div', 'These are seed sellers’ published figures, not extension-verified rates.' + note, 'class="note"');
+  }
+
+  // Cost line (plan row 29, 11/23/26). Uses only the bag size and price the visitor
+  // types; the page never shows an Amazon price (Associates rules allow prices only
+  // from Amazon-served links or the product API). Bags are whole bags, rounded up.
+  function costLine(need) {
+    var cb = num('cbag'), cp = num('cprice');
+    if (!need.length || !cb || !cp) return '';
+    var parts = need.map(function (n) {
+      var b0 = Math.ceil(n[1] / G_PER_LB / cb - 1e-9), b1 = Math.ceil(n[2] / G_PER_LB / cb - 1e-9);
+      b0 = Math.max(b0, 1); b1 = Math.max(b1, 1);
+      var bags = b0 === b1 ? b0 + (b0 === 1 ? ' bag' : ' bags') : b0 + DASH + b1 + ' bags';
+      var cost = range(b0 * cp, b1 * cp, function (x) { return '$' + x.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); });
+      return n[0] + ': ' + bags + ', ' + cost;
+    });
+    return tag('div', tag('strong', 'At your price (' + fmt(cb, 2) + ' lb bag at $' + cp.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '): ') + parts.join('; ') + '.', 'class="cost"');
   }
 
   var fired = false;
@@ -374,7 +406,7 @@
       "author": { "@type": "Person", "name": "Jon P." },
       "publisher": { "@type": "Organization", "name": "LawnSeedPicker" },
       "datePublished": "2026-10-11",
-      "dateModified": "2026-10-24",
+      "dateModified": "2026-11-23",
       "mainEntityOfPage": "https://lawnseedpicker.com/clover-seed-calculator"
     },
     {
