@@ -1,0 +1,27 @@
+{
+  "_about": "Settings for scripts/check-links.mjs. To add a product: add its ASIN to approvedAsins. To give a new tool its own tracking ID: add a tagByFile entry.",
+  "defaultTag": "lawnseedpicke-20",
+  "tagByFile": [
+    { "match": "^picker/", "tag": "lsppicker-20" },
+    { "match": "^clover-windows\\.js$", "tag": "lspchecker-20" },
+    { "match": "^grass-windows\\.js$", "tag": "lspwindow-20" }
+  ],
+  "approvedAsins": {
+    "B000XS3EHA": "EarthWay hand-operated bag spreader",
+    "B001B2WAR2": "Soil thermometer",
+    "B003ZJ92I4": "Outsidepride creeping thyme seed",
+    "B004MN5NO4": "Dense-shade fine fescue mix",
+    "B00E255LIU": "Outsidepride Miniclover seed",
+    "B077JBGG4H": "Scotts Elite broadcast spreader",
+    "B07NLFFXW1": "Bermuda seed blend",
+    "B084TSNR79": "Mail-in soil test",
+    "B09YTHWYBS": "Melnor XT Turbo oscillating sprinkler",
+    "B0B9DHW65X": "Melnor AquaTimer digital hose timer",
+    "B0D9KT3787": "Erosion control blanket",
+    "B0DD2KNLPD": "Twin City Seed Blue Resilience tall fescue and bluegrass blend",
+    "B0DHSVVY1M": "Envy turf-type tall fescue seed",
+    "B0GTN8LXC2": "Turf-type tall fescue blend",
+    "B0H32CYDYQ": "Rolling core aerator"
+  },
+  "skipDirs": [".git", ".github", "node_modules", "picker/vendor", "scripts", "data", "images", "pins"]
+}

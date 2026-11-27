@@ -85,6 +85,19 @@ Once `lawnseedpicker.com` serves from the new Git project and is verified, delet
 
 ---
 
+## Link check (automatic)
+
+`scripts/check-links.mjs` runs on every pull request, every push to `main`, and on the 1st of each month (`.github/workflows/link-check.yml`). It never contacts Amazon; it reads the repo's files and checks:
+
+- every Amazon link has a tracking ID, and the right one for its file (`lawnseedpicke-20` on pages, `lsppicker-20` in `picker/`, `lspchecker-20` in `clover-windows.js`, `lspwindow-20` in `grass-windows.js`)
+- every ASIN is on the approved list in `scripts/link-rules.json`
+- Amazon links have `rel="sponsored"` (plus `noopener` when they open a new tab) and no dollar amounts in the link text
+- every internal link, image and `#anchor` resolves, and every URL in `sitemap.xml`, `llms.txt` and `feed.xml` exists
+
+Adding a new Amazon product: add its ASIN and a short name to `approvedAsins` in `scripts/link-rules.json` in the same pull request. Run it locally with `node scripts/check-links.mjs`.
+
+It cannot tell whether Amazon still sells a product; that needs Amazon's Creators API once the account qualifies.
+
 ## Notes / future hardening
 
 - **Privacy / no third-party requests:** React + htm are vendored locally (`picker/vendor/`), so the site makes **no runtime calls to any third party**. The zip and all data stay in the browser; nothing is fetched from a CDN. This is deliberate — it's the privacy posture the whole tool is built around.
