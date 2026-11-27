@@ -1,0 +1,31 @@
+name: Link check
+
+# Checks every Amazon link (tracking ID, approved ASIN, rel="sponsored", no
+# prices) and every internal link, using only the files in this repo.
+# Runs on each pull request, on each push to main, and on the 1st of each month.
+# A failed run shows a red X on the pull request; GitHub emails you when a
+# scheduled run fails.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 13 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test the checker
+        run: node --test scripts/check-links.test.mjs
+      - name: Check links
+        run: node scripts/check-links.mjs
