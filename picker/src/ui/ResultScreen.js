@@ -121,6 +121,7 @@ function RetailBlends({ retail }) {
 const GUIDES = {
   clover_overseed: { href: '/overseeding-with-clover', title: 'Overseeding Clover Into an Existing Lawn' },
   clover_lawn: { href: '/clover-lawn', title: 'Clover Lawns' },
+  clover_when: { href: '/when-to-plant-clover', title: 'When to Plant Clover: Check Your Area\'s Window' },
   dogs: { href: '/dog-urine-spots-lawn', title: 'Dog Urine Spots on the Lawn' },
   shade: { href: '/shade-grass-seed', title: 'Best Grass Seed for Shade' },
   overseed: { href: '/overseeding-fall-vs-spring', title: 'Overseeding: Fall vs. Spring' },
@@ -135,7 +136,7 @@ const GUIDES = {
 export function pickGuides(input, win) {
   const keys = [];
   const existingLawn = input.project === 'overseed' || input.project === 'patch';
-  if (input.alternatives && input.alternatives !== 'grass') keys.push(existingLawn ? 'clover_overseed' : 'clover_lawn');
+  if (input.alternatives && input.alternatives !== 'grass') keys.push(existingLawn ? 'clover_overseed' : 'clover_lawn', 'clover_when');
   if (input.traffic === 'dogs') keys.push('dogs');
   if (input.sun === 'shade') keys.push('shade');
   if (input.project === 'overseed') keys.push('overseed');
